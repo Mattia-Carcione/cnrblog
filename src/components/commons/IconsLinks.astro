@@ -1,0 +1,31 @@
+---
+import { INSTA_SITE, TIKTOK_SITE, MAIL } from "../../consts";
+
+import HeaderLink from "../utilities/HeaderLink.astro";
+import SearchInput from "./SearchInput.astro";
+import Icon from "./Icon.astro";
+
+import type { HTMLAttributes } from 'astro/types';
+
+type Props = {
+  class?: HTMLAttributes<'ul'>['class'];
+};
+
+const { class: className } = Astro.props;
+---
+
+<div class={className}>
+    <SearchInput />
+
+    <HeaderLink href={MAIL}>
+        <Icon name="envelope" class:list="w-6 h-6 text-black icon" />
+    </HeaderLink>
+
+    <HeaderLink href={INSTA_SITE} target={"_blank"}>
+        <Icon name="instagram" class="w-5 h-5 text-black icon" />
+    </HeaderLink>
+
+    <HeaderLink href={TIKTOK_SITE} target={"_blank"}>
+        <Icon name="tiktok" class="w-5 h-5 text-black icon" />
+    </HeaderLink>
+</div>

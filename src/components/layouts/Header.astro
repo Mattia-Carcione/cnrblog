@@ -1,0 +1,49 @@
+---
+import Logo from "../commons/Logo.astro";
+
+import NavLinks from '../commons/NavLinks.astro';
+import HambButton from '../commons/HambButton.astro';
+import IconsLinks from '../commons/IconsLinks.astro';
+
+import '../../styles/components/header.css';
+---
+<header>
+  <!-- NAVBAR -->
+  <nav aria-label="Navigazione principale" class="sticky top-0 left-0 w-full z-50 border-b border-gray-200 shadow-sm container mx-auto px-4" id="main-nav">
+
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="flex justify-between items-center h-16">
+
+        <!-- Logo Desktop -->
+        <div class="hidden md:flex flex-shrink-0">
+          <Logo />
+        </div>
+
+        <!-- Navigation Links (Desktop) -->
+        <NavLinks class="hidden md:flex md:space-x-8" />
+
+        <!-- Social Icons (Desktop) -->
+        <IconsLinks class:list={"hidden md:flex space-x-4 justify-center items-center"} />
+
+        <!-- Mobile: Logo, Socials, Hamburger -->
+        <div class="flex w-full items-center justify-between md:hidden">
+          <!-- Logo Mobile -->
+          <div class="flex-shrink-0 flex">
+            <Logo />
+          </div>
+
+          <!-- Social icons Mobile -->
+          <IconsLinks class:list={"flex space-x-3 justify-center items-center"} />
+
+          <!-- Hamburger button -->
+          <HambButton />
+        </div>
+      </div>
+    </div>
+
+    <!-- Mobile Menu Links -->
+    <div id="mobile-menu" class="md:hidden hidden" aria-hidden="true">
+      <NavLinks class="flex items-center justify-evenly py-4 md:hidden" />
+    </div>
+  </nav>
+</header>

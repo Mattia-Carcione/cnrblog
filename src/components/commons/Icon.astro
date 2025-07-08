@@ -1,0 +1,26 @@
+---
+interface Props {
+  name: string; // esempio: 'instagram'
+  class?: string;
+  ariaLabel?: string;
+}
+
+const { name, class: className = '', ariaLabel = `${name} icon` } = Astro.props;
+
+// Importa tutti gli SVG in src/assets/icons/
+const icons = import.meta.glob('../../assets/icons/*.svg', { as: 'raw' });
+
+let svg = '';
+const path = `../../assets/icons/${name}.svg`;
+
+if (icons[path]) {
+  svg = await icons[path]();
+  svg = svg
+    .replace('<svg', `<svg class="${className}" aria-label="${ariaLabel}"`)
+    .replace(/aria-hidden="true"/, 'aria-hidden="false"');
+} else {
+  console.warn(`❌ Icona "${name}" non trovata in src/assets/icons/`);
+}
+---
+
+{svg ? <Fragment set:html={svg} /> : null}

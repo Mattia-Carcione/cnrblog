@@ -1,0 +1,12 @@
+#main-nav {
+    background: var(--ame-rose-gradient);
+}
+
+li:hover,
+.icon:hover {
+    color: var(--icterine);
+}
+
+a[aria-current="page"] {
+  color: var(--icterine);
+}

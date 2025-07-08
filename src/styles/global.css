@@ -3,9 +3,15 @@
   https://github.com/HermanMartinus/bearblog/blob/297026a877bc2ab2b3bdfbd6b9f7961c350917dd/templates/styles/blog/default.css
   License MIT: https://github.com/HermanMartinus/bearblog/blob/master/LICENSE.md
  */
+
+@import url('https://fonts.googleapis.com/css2?family=Fredoka:wght@500&family=Nunito&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Fredoka:wght@500&family=Caveat&display=swap');
+
 @import "tailwindcss";
 
 :root {
+	--text-color: #000;
+	--white: #fff;
 	--icterine-rgb: 256, 256, 117;
 	--icterine-gradient: rgba(var(--icterine-rgb), 50%), #FFFF75;
 	--icterine: #FFFF75;
@@ -13,7 +19,7 @@
 	--french-rose: #EA548F;
 	--amethyst: #9E5BDC;
 	--mauve: #EEC7FC;
-	--ame-rose-gradient: linear-gradient(135deg,var(--amethyst), var(--french-rose));
+	--ame-rose-gradient: linear-gradient(135deg, var(--amethyst), var(--french-rose));
 }
 
 @font-face {
@@ -23,6 +29,7 @@
 	font-style: normal;
 	font-display: swap;
 }
+
 @font-face {
 	font-family: 'Atkinson';
 	src: url('/fonts/atkinson-bold.woff') format('woff');
@@ -32,7 +39,7 @@
 }
 
 body {
-	font-family: 'Atkinson', sans-serif;
+	font-family: 'Fredoka', sans-serif;
 	margin: 0;
 	padding: 0;
 	word-wrap: break-word;
@@ -43,6 +50,7 @@ body {
 	body {
 		font-size: 18px;
 	}
+
 	main {
 		padding: 1em;
 	}
