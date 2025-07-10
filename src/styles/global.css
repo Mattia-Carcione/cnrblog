@@ -21,7 +21,7 @@
 	--ame-rose-gradient: linear-gradient(135deg, var(--amethyst), var(--french-rose));
 	--link-hover: #6A1B9A; /* Un viola medio acceso */
 	--link-color: #FFFF75;
-	--navbar-gradient: linear-gradient(180deg, var(--french-rose), #CDABED);
+	--secondary-gradient: linear-gradient(180deg, var(--french-rose), #CDABED);
 	/* --body-gradient: linear-gradient(90deg, #d8b4f8 , #fff176); */
 	--body-gradient: linear-gradient(135deg,
 			#d8b4f8 0%,
@@ -31,7 +31,7 @@
 	--text-main: #2b1c3a; /* scuro, leggibile su sfondi chiari */
 	--text-subtle: #4c3d5d;
 	--heading-color: #4C206D; /* per h1 */
-	--subheading-color: #7E52A0; /* per h2, h3 */
+	--subheading-color: #7E52A0; /* per h2, h3, ... */
 	--paragraph-color: #3b2b4f;
 }
 
@@ -219,8 +219,8 @@ li {
 }
 
 /* NAVBAR */
-#main-nav {
-	background: var(--navbar-gradient);
+#main-nav, #footer {
+	background: var(--secondary-gradient);
 }
 
 #menu-toggle span {
@@ -251,7 +251,6 @@ li {
 .btn-funky:hover {
   border-color: var(--link-color);
   transition: border 0.3s;
-
 }
 
 .btn-funky:hover::before {

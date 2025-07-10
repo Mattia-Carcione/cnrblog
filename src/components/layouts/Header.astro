@@ -13,25 +13,27 @@ import IconsLinks from '../commons/IconsLinks.astro';
       <div class="flex justify-between items-center h-16">
 
         <!-- Logo Desktop -->
-        <div class="hidden md:flex flex-shrink-0">
+        <div class="hidden md:flex flex-shrink-0" aria-label="Logo">
           <Logo />
         </div>
 
         <!-- Navigation Links (Desktop) -->
-        <NavLinks class="hidden md:flex md:space-x-8" />
+         <ul class="hidden md:flex md:space-x-8" role="list">
+           <NavLinks  />
+         </ul>
 
         <!-- Social Icons (Desktop) -->
-        <IconsLinks class:list={"hidden md:flex space-x-4 justify-center items-center"} />
+        <IconsLinks showSearch={true} class:list={"hidden md:flex space-x-4 justify-center items-center"} />
 
         <!-- Mobile: Logo, Socials, Hamburger -->
         <div class="flex w-full items-center justify-between md:hidden">
           <!-- Logo Mobile -->
-          <div class="flex-shrink-0 flex">
+          <div class="flex-shrink-0 flex" aria-label="Logo">
             <Logo />
           </div>
 
           <!-- Social icons Mobile -->
-          <IconsLinks class:list={"flex space-x-3 justify-center items-center"} />
+          <IconsLinks showSearch={true} class:list={"flex space-x-3 justify-center items-center"} />
 
           <!-- Hamburger button -->
           <HambButton />
@@ -41,7 +43,9 @@ import IconsLinks from '../commons/IconsLinks.astro';
 
     <!-- Mobile Menu Links -->
     <div id="mobile-menu" class="md:hidden hidden" aria-hidden="true">
-      <NavLinks class="flex items-center justify-evenly py-4 md:hidden" />
+      <ul role="list" class="flex items-center justify-evenly py-4 md:hidden">
+        <NavLinks  />
+      </ul>
     </div>
   </nav>
 </header>

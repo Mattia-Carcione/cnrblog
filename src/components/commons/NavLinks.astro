@@ -1,41 +1,22 @@
 ---
 import HeaderLink from '../utilities/HeaderLink.astro';
 import { getCurrentPathMatch } from '../../utils/url.ts';
+import { NAV_LINKS } from '../../consts';
+
 import type { HTMLAttributes } from 'astro/types';
 
-
 type Props = {
-  class?: HTMLAttributes<'ul'>['class'];
+  class?: HTMLAttributes<'li'>['class'];
 };
 
-const { class: className } = Astro.props;
+const { class: className, ...props } = Astro.props;
 const currentUrl = Astro.url;
 ---
 
-<ul class={className} role="list">
-  <li>
-    <HeaderLink href="/" aria-label="Vai alla Home" aria-current={getCurrentPathMatch(currentUrl, "/")} role="menuitem" class="transition">
-      Home
+{NAV_LINKS.map((link, index) => (
+  <li class={className} {...props}>
+    <HeaderLink href={link.href} aria-label={`Vai alla sezione ${link.label}`} aria-current={getCurrentPathMatch(currentUrl, link.href)} role="menuitem" class="transition">
+      {link.label}
     </HeaderLink>
   </li>
-  <li>
-    <HeaderLink href="/blog" aria-label="Vai alla sezione Blog" aria-current={getCurrentPathMatch( currentUrl, "/blog")} role="menuitem" class="transition">
-      Blog
-    </HeaderLink>
-  </li>
-  <li>
-    <HeaderLink href="/guide" aria-label="Vai alla sezione Mini-Guide" aria-current={getCurrentPathMatch(currentUrl, "/guide")} role="menuitem" class="transition">
-      Mini-Guide
-    </HeaderLink>
-  </li>
-  <li>
-    <HeaderLink href="/about" aria-label="Vai alla sezione Chi Sono" aria-current={getCurrentPathMatch(currentUrl, "/about")} role="menuitem" class="transition">
-      Chi Sono
-    </HeaderLink>
-  </li>
-  <li>
-    <HeaderLink href="/servizi" aria-label="Vai alla sezione Servizi" aria-current={getCurrentPathMatch(currentUrl, "/servizi")} role="menuitem" class="transition">
-      Servizi
-    </HeaderLink>
-  </li>
-</ul>
+))}

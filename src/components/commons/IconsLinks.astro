@@ -1,5 +1,5 @@
 ---
-import { INSTA_SITE, TIKTOK_SITE, MAIL } from "../../consts";
+import { SOCIAL_LINKS } from "../../consts";
 
 import HeaderLink from "../utilities/HeaderLink.astro";
 import SearchInput from "./SearchInput.astro";
@@ -9,23 +9,18 @@ import type { HTMLAttributes } from 'astro/types';
 
 type Props = {
   class?: HTMLAttributes<'ul'>['class'];
+  showSearch?: boolean;
 };
 
-const { class: className } = Astro.props;
+const { class: className, showSearch = false } = Astro.props;
 ---
 
 <div class={className} aria-label="Social media e ricerca" role="navigation">
-    <SearchInput />
+    {showSearch && <SearchInput />}
 
-    <HeaderLink href={`mailto:${MAIL}`} aria-label="Contattami per email" title={"Mail di Anna"}>
-        <Icon name="envelope" class:list="w-6 h-6 text-black icon" />
-    </HeaderLink>
-
-    <HeaderLink href={INSTA_SITE} target={"_blank"}  rel="noopener noreferrer" aria-label="Vai al mio sito Instagram" title={"Instagram di Anna"}>
-        <Icon name="instagram" class="w-5 h-5 text-black icon" />
-    </HeaderLink>
-
-    <HeaderLink href={TIKTOK_SITE} target={"_blank"}  rel="noopener noreferrer" aria-label="Vai al mio sito TikTok" title={"TikTok di Anna"}>
-        <Icon name="tiktok" class="w-5 h-5 text-black icon" />
-    </HeaderLink>
+    {SOCIAL_LINKS.map((link, index) => (
+        <HeaderLink href={link.href} aria-label={link.label} title={link.title} target={link.target} rel={link.rel}>
+            <Icon name={link.icon} class="w-5 h-5 icon" />
+        </HeaderLink>
+    ))}
 </div>
