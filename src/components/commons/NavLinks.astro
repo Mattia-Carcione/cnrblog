@@ -12,7 +12,7 @@ const { class: className } = Astro.props;
 const currentUrl = Astro.url;
 ---
 
-<ul class={className} role="menu">
+<ul class={className} role="list">
   <li>
     <HeaderLink href="/" aria-label="Vai alla Home" aria-current={getCurrentPathMatch(currentUrl, "/")} role="menuitem" class="transition">
       Home

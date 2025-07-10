@@ -14,18 +14,18 @@ type Props = {
 const { class: className } = Astro.props;
 ---
 
-<div class={className}>
+<div class={className} aria-label="Social media e ricerca" role="navigation">
     <SearchInput />
 
-    <HeaderLink href={MAIL}>
+    <HeaderLink href={`mailto:${MAIL}`} aria-label="Contattami per email" title={"Mail di Anna"}>
         <Icon name="envelope" class:list="w-6 h-6 text-black icon" />
     </HeaderLink>
 
-    <HeaderLink href={INSTA_SITE} target={"_blank"}>
+    <HeaderLink href={INSTA_SITE} target={"_blank"}  rel="noopener noreferrer" aria-label="Vai al mio sito Instagram" title={"Instagram di Anna"}>
         <Icon name="instagram" class="w-5 h-5 text-black icon" />
     </HeaderLink>
 
-    <HeaderLink href={TIKTOK_SITE} target={"_blank"}>
+    <HeaderLink href={TIKTOK_SITE} target={"_blank"}  rel="noopener noreferrer" aria-label="Vai al mio sito TikTok" title={"TikTok di Anna"}>
         <Icon name="tiktok" class="w-5 h-5 text-black icon" />
     </HeaderLink>
 </div>

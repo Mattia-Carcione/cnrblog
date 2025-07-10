@@ -1,0 +1,12 @@
+---
+import HeaderLink from "../utilities/HeaderLink.astro";
+
+const { href, ...props } = Astro.props;
+---
+
+<HeaderLink class="btn-funky" href={href} {...props}>
+    <span class="btn-funky-content">
+        <slot />
+    </span>
+</HeaderLink>
+

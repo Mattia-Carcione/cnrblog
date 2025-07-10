@@ -8,7 +8,7 @@
 
 .search-container:hover {
   transition: width 0.3s ease;
-  background-color: var(--white);
+  background: var(--navbar-gradient);
   border-radius: 20px;
   border: 2px solid var(--emerald);
   padding: 5px;
@@ -23,6 +23,7 @@
   opacity: 0;
   font-size: 14px;
   transition: width 0.3s ease, opacity 0.3s ease;
+  color: var(--link-color);
 }
 
 .search-container:hover .search-input {
@@ -32,7 +33,7 @@
 
 /* SEARCH ICON */
 .search-icon {
-  color: var(--text-color);
+  color: var(--link-color);
   flex-shrink: 0;
 }
 
@@ -40,7 +41,7 @@
 @media (max-width: 767px) {
 	.search-container {
 		border: 2px solid var(--emerald);
-		background-color: var(--white);
+		background: var(--navbar-gradient);
 		border-radius: 20px;
 		padding: 5px;
 	}
@@ -54,7 +55,7 @@
 
 	.search-container:hover {
 		/* disattiva effetti hover */
-		background-color: var(--white);
+		background: var(--navbar-gradient);
 		border: 2px solid var(--emerald);
 	}
 }

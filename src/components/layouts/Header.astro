@@ -4,12 +4,10 @@ import Logo from "../commons/Logo.astro";
 import NavLinks from '../commons/NavLinks.astro';
 import HambButton from '../commons/HambButton.astro';
 import IconsLinks from '../commons/IconsLinks.astro';
-
-import '../../styles/components/header.css';
 ---
-<header>
+<header class="sticky top-0 left-0 z-100">
   <!-- NAVBAR -->
-  <nav aria-label="Navigazione principale" class="sticky top-0 left-0 w-full z-50 border-b border-gray-200 shadow-sm container mx-auto px-4" id="main-nav">
+  <nav aria-label="Navigazione principale" class="backdrop-blur-md shadow-md w-full border-b border-gray-200 shadow-sm mx-auto px-4" id="main-nav">
 
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
       <div class="flex justify-between items-center h-16">

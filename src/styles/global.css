@@ -10,16 +10,29 @@
 @import "tailwindcss";
 
 :root {
-	--text-color: #000;
+	--text-color: #222;
 	--white: #fff;
 	--icterine-rgb: 256, 256, 117;
 	--icterine-gradient: rgba(var(--icterine-rgb), 50%), #FFFF75;
-	--icterine: #FFFF75;
 	--emerald: #35C56D;
 	--french-rose: #EA548F;
 	--amethyst: #9E5BDC;
 	--mauve: #EEC7FC;
 	--ame-rose-gradient: linear-gradient(135deg, var(--amethyst), var(--french-rose));
+	--link-hover: #6A1B9A; /* Un viola medio acceso */
+	--link-color: #FFFF75;
+	--navbar-gradient: linear-gradient(180deg, var(--french-rose), #CDABED);
+	/* --body-gradient: linear-gradient(90deg, #d8b4f8 , #fff176); */
+	--body-gradient: linear-gradient(135deg,
+			#d8b4f8 0%,
+			#eacaf2 30%,
+			/* zona intermedia più chiara del viola */
+			#FFFFAD 100%);
+	--text-main: #2b1c3a; /* scuro, leggibile su sfondi chiari */
+	--text-subtle: #4c3d5d;
+	--heading-color: #4C206D; /* per h1 */
+	--subheading-color: #7E52A0; /* per h2, h3 */
+	--paragraph-color: #3b2b4f;
 }
 
 @font-face {
@@ -44,7 +57,129 @@ body {
 	padding: 0;
 	word-wrap: break-word;
 	overflow-wrap: break-word;
+	background: var(--body-gradient);
 }
+
+main {
+	margin: 2.5rem;
+	padding: 0;
+}
+
+/* HEADINGS + PARAGRAPH — BASE (mobile first) */
+h1 {
+  font-size: 1.75rem; /* ~32px */
+  font-weight: 800;
+  color: var(--heading-color);
+  line-height: 1.2;
+  margin-bottom: 1rem;
+}
+
+h2 {
+  font-size: 1.5rem; /* ~24px */
+  font-weight: 700;
+  color: var(--subheading-color);
+  margin-top: 2rem;
+  margin-bottom: 1rem;
+}
+
+h3 {
+  font-size: 1.25rem; /* ~20px */
+  font-weight: 600;
+  color: var(--subheading-color);
+  margin-top: 1.5rem;
+  margin-bottom: 0.75rem;
+}
+
+p {
+  font-size: 1rem; /* ~16px */
+  line-height: 1.7;
+  color: var(--paragraph-color);
+  margin-bottom: 1.25rem;
+  font-weight: 400;
+}
+
+/* MEDIUM DEVICES (TABLET ≥ 640px) */
+@media (min-width: 640px) {
+  h1 {
+    font-size: 2rem; /* ~40px */
+  }
+
+  h2 {
+    font-size: 1.75rem; /* ~32px */
+  }
+
+  h3 {
+    font-size: 1.25rem; /* ~24px */
+  }
+
+  p {
+    font-size: 1.125rem; /* ~18px */
+  }
+}
+
+/* LARGE DEVICES (DESKTOP ≥ 1024px) */
+@media (min-width: 1024px) {
+  h1 {
+    font-size: 2rem; /* ~48px */
+  }
+
+  h2 {
+    font-size: 1.75rem; /* ~36px */
+  }
+
+  h3 {
+    font-size: 1.25rem; /* ~28px */
+  }
+
+  p {
+    font-size: 1rem; /* ~20px */
+  }
+}
+
+/* XL DEVICES (LARGE DESKTOP ≥ 1280px) */
+@media (min-width: 1280px) {
+  h1 {
+    font-size: 2.5rem; /* ~56px */
+  }
+
+  h2 {
+    font-size: 2rem; /* ~40px */
+  }
+
+  h3 {
+    font-size: 1.5rem; /* ~32px */
+  }
+
+  p {
+    font-size: 1.175rem; /* ~22px */
+  }
+}
+
+
+/* Link */
+a, .icon {
+	color: var(--link-color);
+	font-weight: 500;
+	transition: color 0.3s ease;
+}
+
+li:hover,
+.icon:hover,
+a:hover {
+	color: var(--link-hover);
+	transition: color 0.3s ease;
+}
+
+a[aria-current="page"] {
+	color: var(--link-hover);
+}
+
+/* LIST */
+li {
+	font-size: 1.125rem;
+	position: relative;
+}
+
 
 @media (max-width: 720px) {
 	body {
@@ -72,4 +207,68 @@ body {
 	clip-path: inset(50%);
 	/* added line to stop words getting smushed together (as they go onto separate lines and some screen readers do not understand line feeds as a space */
 	white-space: nowrap;
+}
+
+.gradient-text {
+	background: var(--ame-rose-gradient);
+	color: transparent;
+	background-clip: text;
+  -webkit-background-clip: text;
+  -moz-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+/* NAVBAR */
+#main-nav {
+	background: var(--navbar-gradient);
+}
+
+#menu-toggle span {
+	background-color: var(--link-color);
+} 
+
+/* CTA */
+.btn-funky {
+  padding: 5px;
+  border-bottom: 3px solid var(--french-rose);
+  background: transparent;
+  border-radius: 0.25rem; /* quadrato morbido */
+  transition: all 0.3s ease-in-out;
+  position: relative;
+  overflow: hidden;
+}
+
+.btn-funky::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: var(--ame-rose-gradient); /* il tuo rosa+viola */
+  z-index: 0;
+  transform: translateY(100%);
+  transition: transform 0.4s ease;
+}
+
+.btn-funky:hover {
+  border-color: var(--link-color);
+  transition: border 0.3s;
+
+}
+
+.btn-funky:hover::before {
+  transform: translateY(0%);
+}
+
+.btn-funky-content {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--french-rose);
+  font-size: 1.25rem;
+  transition: color 0.3s;
+}
+
+.btn-funky:hover .btn-funky-content {
+  color: var(--link-color);
 }
