@@ -3,7 +3,7 @@
 
 
 /* SITE */
-export const SITE_TITLE = 'Blog di Anna';
+export const SITE_TITLE = 'commenti.non.richiesti';
 export const COMPANY_NAME = 'commenti.non.richiesti';
 export const SITE_DESCRIPTION = 'Scopri luoghi originali. Recensioni vere, esperienze autentiche e pratiche mini-guide.';
 
@@ -20,7 +20,7 @@ export const NAV_LINKS = [
   { label: "Blog", href: "/blog" },
   { label: "Mini-Guide", href: "/guide" },
   { label: "Chi Sono", href: "/about" },
-  { label: "Servizi", href: "/servizi" },
+  { label: "Contatti", href: "/contatti" },
 ];
 
 export const SOCIAL_LINKS = [

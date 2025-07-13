@@ -6,6 +6,7 @@
 
 @import url('https://fonts.googleapis.com/css2?family=Fredoka:wght@500&family=Nunito&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Fredoka:wght@500&family=Caveat&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Rock+Salt&display=swap" rel="stylesheet');
 
 @import "tailwindcss";
 
@@ -62,7 +63,7 @@ body {
 
 main {
 	margin: 2.5rem;
-	padding: 0;
+	padding: 1.5rem;
 }
 
 /* HEADINGS + PARAGRAPH — BASE (mobile first) */
@@ -210,12 +211,30 @@ li {
 }
 
 .gradient-text {
-	background: var(--ame-rose-gradient);
-	color: transparent;
-	background-clip: text;
+  background: 
+    linear-gradient(
+      120deg,
+      var(--amethyst) 0%,
+      var(--french-rose) 50%,
+      var(--amethyst) 100%
+    ),
+    var(--ame-rose-gradient);
+  background-size: 200% 100%;
+  background-position: -100% 0;
+  color: transparent;
+  background-clip: text;
   -webkit-background-clip: text;
-  -moz-background-clip: text;
   -webkit-text-fill-color: transparent;
+  animation: shine-text 2.5s infinite linear;
+}
+
+@keyframes shine-text {
+  0% {
+    background-position: 100% 0;
+  }
+  100% {
+    background-position: -100% 0;
+  }
 }
 
 /* NAVBAR */
@@ -270,4 +289,62 @@ li {
 
 .btn-funky:hover .btn-funky-content {
   color: var(--link-color);
+}
+
+/* ACCESIBILITY */
+@media (forced-colors: active),
+(prefers-contrast: high), (prefers-reduced-transparency: reduce), (inverted-colors: inverted), (-ms-high-contrast: active) {
+  body, nav {
+    background: var(--white);
+  }
+
+  a, .icon {
+    color: var(--link-hover);
+  }
+  
+  .gradient-text {
+    background: none; /* togli il background-clip */
+    -webkit-background-clip: unset;
+    background-clip: unset;
+    -webkit-text-fill-color: unset;
+    color: var(--heading-color); /* testo visibile */
+    opacity: 1;
+  }
+}
+
+@media (prefers-reduced-motion: reduce){
+  #hero-col-left, #hero-col-right,
+  #divider, #latest-posts, 
+  #divider-heading, #newPost
+  {
+    animation: none;
+    transform: none;
+  } 
+
+  .gradient-text {
+    background: none; /* togli il background-clip */
+    -webkit-background-clip: unset;
+    background-clip: unset;
+    -webkit-text-fill-color: unset;
+    color: var(--heading-color); /* testo visibile */
+    opacity: 1;
+  }
+
+  .search-icon, .search-input {
+    color: var(--paragraph-color)!important;
+  }
+
+  .search-container {
+		border: 2px solid var(--emerald) !important;
+		background: var(--white) !important;
+		border-radius: 20px;
+		padding: 5px;
+	}
+
+	.search-input {
+		width: 150px !important;
+		opacity: 1 !important;
+		transition: none;
+		/* disattiva la transizione */
+	}
 }

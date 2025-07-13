@@ -1,12 +1,13 @@
 ---
-import BaseHead from '../../components/utilities/BaseHead.astro';
-import Header from '../../components/layouts/Header.astro';
-import Footer from '../../components/layouts/Footer.astro';
-import { SITE_TITLE, SITE_DESCRIPTION } from '../../consts';
-import { getCollection } from 'astro:content';
-import FormattedDate from '../../components/utilities/FormattedDate.astro';
+import BaseHead from "../../components/utilities/BaseHead.astro";
+import Header from "../../components/layouts/Header.astro";
+import Footer from "../../components/layouts/Footer.astro";
+import Polaroid from "../../components/commons/Polaroid.astro";
+import { SITE_TITLE, SITE_DESCRIPTION } from "../../consts";
+import { getCollection } from "astro:content";
+import FormattedDate from "../../components/utilities/FormattedDate.astro";
 
-const posts = (await getCollection('blog')).sort(
+const posts = (await getCollection("blog")).sort(
 	(a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf(),
 );
 ---
@@ -19,18 +20,26 @@ const posts = (await getCollection('blog')).sort(
 	<body>
 		<Header />
 		<main>
-			<section>
-				<ul>
-					{
-						posts.map((post) => (
-							<li>
-								<a href={`/blog/${post.id}/`}>
-									
-								</a>
-							</li>
-						))
-					}
-				</ul>
+			<section class="grid gap-8 sm:grid-cols-2 lg:grid-cols-3 place-items-center">
+				{
+					posts.map((post, index) => {
+						return (
+							<a href={`/blog/${post.id}/`} class="relative rounded-md p-3 w-full max-w-xs transform hover:-rotate-1 hover:scale-105 transition duration-300 group text-black! polaroid-link" aria-label={`Vai all'articolo: ${post.data.title}`}>
+								<Polaroid
+									src={post.data.heroImage?.src}
+									alt={post.data.heroImgAlt || post.data.title}
+									aos={"fade-up"}
+									caption={post.data.title}
+									class={`relative bg-white p-3 w-full shadow-[1rem_1rem_1rem_-0.5rem_rgba(0,0,0,0.54)] my-3 lg:my-16 mx-auto text-right transition-all duration-300 ease-in-out hover:-top-4 hover:cursor-pointer`}
+									isLast={index === 0}
+									description={post.data.description}
+									itemtype="http://schema.org/BlogPosting"
+									year={`${post.data.pubDate.getUTCDay()}/${post.data.pubDate.getUTCMonth()}/${post.data.pubDate.getUTCFullYear()}`}
+								/>
+							</a>
+						);
+					})
+				}
 			</section>
 		</main>
 		<Footer />

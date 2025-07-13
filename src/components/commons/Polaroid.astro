@@ -1,0 +1,33 @@
+---
+import Icon from "../utilities/Icon.astro";
+
+const { src, alt, caption, location, year, class: className, description, aos = 'fade-up', aosDelay = "300", aosEasing = "ease-in-back", aosOffset = "200", isLast = false, ...props } = Astro.props;
+---
+
+<article class={className} itemscope data-aos={aos} data-aos-easing={aosEasing} data-aos-delay={aosDelay} data-aos-offset={aosOffset} {...props}>
+  <figure class="polaroid">
+    {isLast && (
+      <span class="absolute -top-12 -left-12 z-10 -rotate-25 w-32 h-32" aria-label="Nuovo post" title="Nuovo post">
+          <Icon name="newPost" class="text-red-500 m-0 p-0 w-full h-full animate-[pulse_0.5s_ease-in-out_infinite]" id="newPost" />
+      </span>)}
+    <div class="relative">
+      <img src={src} alt={alt} class="max-w-full h-full object-cover m-0" loading="lazy" itemprop="image" />
+      
+      <div class="absolute inset-0 bg-white bg-opacity-90 flex items-center justify-center opacity-0 group-hover:opacity-85 transition-opacity duration-300" aria-hidden="true">
+        <p class="px-4 text-sm text-black text-center line-clamp-3">
+          {description}
+        </p>
+      </div>
+    </div>
+    <figcaption class="font-[Rock_Salt] p-2 text-xs!" itemprop="headline">
+      {caption || `${location}, ${year}`}
+      <hr class="py-2 mt-2">
+      {`${year}`}
+    </figcaption>
+  </figure>
+  <meta itemprop="datePublished" content={year} />
+  <meta itemprop="locationCreated" content={location} />
+  <span itemprop="author" itemscope itemtype="https://schema.org/Person">
+    <meta itemprop="name" content="Anna" />
+  </span>
+</article>

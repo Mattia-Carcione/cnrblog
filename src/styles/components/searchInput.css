@@ -8,7 +8,7 @@
 
 .search-container:hover {
   transition: width 0.3s ease;
-  background: var(--navbar-gradient);
+  background: var(--white);
   border-radius: 20px;
   border: 2px solid var(--emerald);
   padding: 5px;
@@ -29,12 +29,17 @@
 .search-container:hover .search-input {
   width: 150px;
   opacity: 1;
+  color: var(--paragraph-color);
 }
 
 /* SEARCH ICON */
 .search-icon {
   color: var(--link-color);
   flex-shrink: 0;
+}
+
+.search-container:hover .search-icon {
+  color: var(--paragraph-color);
 }
 
 /* SEARCH INPUT MEDIA QUERY */
