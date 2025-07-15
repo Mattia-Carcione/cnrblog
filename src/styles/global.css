@@ -16,7 +16,7 @@
 	--amethyst: #9E5BDC;
 	--mauve: #EEC7FC;
 	--ame-rose-gradient: linear-gradient(135deg, var(--amethyst), var(--french-rose));
-	--link-hover: #6A1B9A; /* Un viola medio acceso */
+	--link-hover: #6a1b9a; /* Un viola medio acceso */
 	--link-color: #FFFF75;
 	--secondary-gradient: linear-gradient(180deg, var(--french-rose), #CDABED);
 	/* --body-gradient: linear-gradient(90deg, #d8b4f8 , #fff176); */
@@ -169,7 +169,8 @@ a, .icon {
 
 li:hover,
 .icon:hover,
-a:hover {
+a:hover,
+#social-site:hover {
 	color: var(--link-hover);
 	transition: color 0.3s ease;
 }
@@ -293,6 +294,10 @@ li {
 
 .btn-funky:hover .btn-funky-content {
   color: var(--link-color);
+}
+
+#social-site {
+  color: var(--french-rose);
 }
 
 /* ACCESIBILITY */

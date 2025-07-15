@@ -12,6 +12,7 @@ export const INSTA_SITE = 'https://www.instagram.com/commenti.non.richiesti?utm_
 export const TIKTOK_SITE = 'https://www.instagram.com/commenti.non.richiesti?utm_source=ig_web_button_share_sheet&igsh=ZDNlZDc0MzIxNw==';
 export const PAYPAL = 'https://www.paypal.me/AnnaSantovitoCNR';
 export const MAIL = 'test@gmail.com';
+export const INSTA_SHOOT_SITE = 'https://www.instagram.com/lefotografiediannaa?utm_source=ig_web_button_share_sheet&igsh=ZDNlZDc0MzIxNw==';
 
 /* UTILS */
 export const IMG_PLACEHOLDER = 'https://placehold.co/400x400';
