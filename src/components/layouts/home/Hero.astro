@@ -1,7 +1,8 @@
 ---
 import { SITE_DESCRIPTION } from "../../../consts";
 import { getWebPageStructuredData } from "../../../utils/structuredData";
-import heroImg from '../../../assets/heroImgs/heroImg.jpeg';
+import heroImg from '../../../assets/homeImgs/heroImg.jpeg';
+import ColSectionWrapper from "../../commons/ColSectionWrapper.astro";
 
 const IMG_ALT = "Foto di Anna, autrice del blog.";
 const siteUrl = Astro.site?.toString() ?? 'http://localhost:4321';
@@ -15,10 +16,9 @@ const structuredData = {
 // Genera JSON-LD come stringa
 const JSONstructuredData = getWebPageStructuredData(structuredData);
 ---
-<section class="w-full py-16 bg-transparent" id="hero">
-  <div class="max-w-7xl mx-auto px-4 flex flex-col-reverse lg:flex-row items-center justify-between gap-12">
-    <!-- Left: Text -->
-    <div class="w-full lg:w-1/2 text-center lg:text-left flex flex-col gap-6" data-aos="fade-right" data-aos-easing="ease-in-back" data-aos-delay="100" id="hero-col-left">
+
+<ColSectionWrapper idSection="hero" idLeftCol="hero-col-left" idRightCol="hero-col-right">
+    <Fragment slot="left">
         <h1 class="leading-tight uppercase m-0">
             Hello, Crazy! 🤪
             Benvenuti su <strong class="gradient-text">commenti.non.richiesti</strong>
@@ -43,10 +43,9 @@ const JSONstructuredData = getWebPageStructuredData(structuredData);
                 </span>
             </a>
         </div>
-    </div>
+    </Fragment>
 
-    <!-- Right: Image -->
-    <div class="w-full lg:w-1/2 flex justify-center lg:justify-end h-auto relative" data-aos="fade-left" data-aos-easing="ease-in-back" data-aos-delay="100" id="hero-col-right">
+    <Fragment slot="right">
         <div class="relative inline-block">
             <!-- Ombra rettangolare animata -->
             <div id="img-before" class="absolute top-4 left-4 w-full h-full bg-[#4C206D]/30 animate-pulse transition-all duration-500 ease-in-out z-0 rounded-t-[50%]">
@@ -55,8 +54,7 @@ const JSONstructuredData = getWebPageStructuredData(structuredData);
             <!-- Immagine vera sopra -->
             <img id="hero-img" src={heroImg.src} alt={IMG_ALT} class="w-full max-w-md shadow-xl/30 object-cover relative z-10 rounded-t-[50%]" loading="lazy" />
         </div>
-    </div>
-  </div>
-</section>
+    </Fragment>
+</ColSectionWrapper>
 
 <script type="application/ld+json" set:html={JSONstructuredData}/>

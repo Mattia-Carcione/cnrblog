@@ -1,0 +1,19 @@
+---
+const { sectionId, sectionAriaLabelledby, sectionRole, sectionClass, divClass, divAriaLabelledby, divId, href, btnAriaLabel, h2, h2Class, btnContent, ...props } = Astro.props;
+---
+
+<section id={sectionId} aria-labelledby={sectionAriaLabelledby} role={sectionRole} class={sectionClass} {...props}>
+  <h2 class={h2Class} id={sectionAriaLabelledby}>{h2}</h2>
+
+  <div class=`bg-gradient-to-b from-[#CDABED] via-[#F5EEFB] to-[#FFFFEB] rounded-lg ${divClass}` aria-labelledby={divAriaLabelledby} id={divId}>
+    <slot />
+  </div>
+
+  <div class="flex justify-center mt-12">
+    <a href={href} aria-label={btnAriaLabel} class="btn-funky">
+      <span class="btn-funky-content">
+        {btnContent}
+      </span>
+    </a>
+  </div>
+</section>

@@ -2,7 +2,7 @@
 title: 'Cosa vedere da Mario alle 3 di notte'
 description: 'Lorem ipsum dolor sit amet'
 pubDate: 'Jul 22 2022'
-heroImage: '../../../assets/heroImgs/heroImg.jpeg'
+heroImage: '../../../assets/homeImgs/heroImg.jpeg'
 heroImgAlt: 'prova'
 ---
 

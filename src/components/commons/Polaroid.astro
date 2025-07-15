@@ -1,7 +1,7 @@
 ---
 import Icon from "../utilities/Icon.astro";
 
-const { src, alt, caption, location, year, class: className, description, aos = 'fade-up', aosDelay = "300", aosEasing = "ease-in-back", aosOffset = "200", isLast = false, ...props } = Astro.props;
+const { src, alt, caption, location, year, class: className, description, aos, aosDelay, aosEasing, aosOffset, isLast = false, ...props } = Astro.props;
 ---
 
 <article class={className} itemscope data-aos={aos} data-aos-easing={aosEasing} data-aos-delay={aosDelay} data-aos-offset={aosOffset} {...props}>
