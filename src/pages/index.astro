@@ -10,6 +10,7 @@ import { SITE_TITLE, SITE_DESCRIPTION } from '../consts';
 import Divider from '../components/layouts/home/Divider.astro';
 import MiniGuide from '../components/layouts/home/MiniGuide.astro';
 import Testimonials from '../components/layouts/home/Testimonials.astro';
+import Contatti from '../components/layouts/home/Contatti.astro';
 ---
 
 <!doctype html>
@@ -24,10 +25,11 @@ import Testimonials from '../components/layouts/home/Testimonials.astro';
 		<Header />
 		<main id="main-content">
 			<Hero />
-			<Divider />
 			<LatestPosts />
+			<Divider />
 			<MiniGuide />
 			<Testimonials />
+			<Contatti />
 		</main>
 		<Footer />
 	</body>

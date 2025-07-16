@@ -9,7 +9,7 @@ const posts = (await getCollection("blog"))
   .slice(0, 3); // solo gli ultimi 3
 ---
 
-<SectionWrapper sectionId="latest-posts-section" sectionAriaLabelledby="latest-posts-heading" sectionRole="region" data-aos="zoom-in" data-aos-easing="ease-in-back" data-aos-offset="200" sectionClass="mt-8" h2Class="sr-only" divAriaLabelledby="latest-posts" href="/blog" btnAriaLabel="Vai alla pagina Blog" h2="Ultimi contenuti del blog" btnContent="Tutti i commenti non richiesti" divId="latest-posts">
+<SectionWrapper sectionId="latest-posts-section" sectionAriaLabelledby="latest-posts-heading" sectionRole="region" data-aos="fade-zoom-in" data-aos-easing="ease-in-back" data-aos-offset="200"  h2Class="text-center uppercase" divAriaLabelledby="latest-posts" href="/blog" btnAriaLabel="Vai alla pagina Blog" h2="Ultimi commenti non richiesti" btnContent="Tutti i commenti non richiesti" divId="latest-posts">
   <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
     <div class="grid gap-8 sm:grid-cols-2 lg:grid-cols-3 place-items-center">
       {posts.map((post, index) => {
