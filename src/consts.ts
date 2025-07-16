@@ -17,7 +17,7 @@ export const INSTA_SHOOT_SITE = 'https://www.instagram.com/lefotografiediannaa?u
 /* UTILS */
 export const IMG_PLACEHOLDER = 'https://placehold.co/400x400';
 
-const BASE_PATH = '/cnrblog';
+export const BASE_PATH = '/cnrblog';
 export const NAV_LINKS = [
   { label: "Home", href: `${BASE_PATH}/` },
   { label: "Blog", href: `${BASE_PATH}/blog` },

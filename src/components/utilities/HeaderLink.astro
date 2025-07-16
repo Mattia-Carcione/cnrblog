@@ -1,12 +1,19 @@
 ---
 import type { HTMLAttributes } from 'astro/types';
+import { BASE_PATH } from '../../consts';
 
 type Props = HTMLAttributes<'a'>;
 
 const { href, class: className, ...props } = Astro.props;
-const pathname = Astro.url.pathname.replace(import.meta.env.BASE_URL, '');
+let pathname = Astro.url.pathname;
+if (pathname.startsWith(BASE_PATH)) {
+  pathname = pathname.slice(BASE_PATH.length - 1); // toglie '/cnrblog' dal path
+}
 const subpath = pathname.match(/[^\/]+/g);
-const isActive = href === pathname || href === '/' + (subpath?.[0] || '');
+const isActive =
+  href === pathname ||
+  href === '/' + (subpath?.[0] || '') ||
+  href === BASE_PATH + (subpath?.[0] || '');
 ---
 
 <a href={href} class:list={[className, { active: isActive }]} {...props}>
