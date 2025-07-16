@@ -5,9 +5,14 @@ import { BASE_PATH } from '../../consts';
 type Props = HTMLAttributes<'a'>;
 
 const { href, class: className, ...props } = Astro.props;
-const pathname = Astro.url.pathname.replace(import.meta.env.BASE_URL, '');
-const subpath = pathname.match(/[^\/]+/g);
-const isActive = href === pathname || href === '/' + (subpath?.[0] || '') || href === BASE_PATH + '/' + (subpath?.[0] || '') ;
+const pathname = Astro.url.pathname;
+
+// Normalizza href e pathname rimuovendo BASE_PATH
+const cleanHref = href?.toString().replace(BASE_PATH, '') || '';
+const cleanPath = pathname.replace(BASE_PATH, '');
+
+// Match se stessi path
+const isActive = cleanHref === cleanPath || cleanHref === '/' && cleanPath === '';
 ---
 
 <a href={href} class:list={[className, { active: isActive }]} {...props}>
