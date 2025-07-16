@@ -12,5 +12,5 @@ export default defineConfig({
     plugins: [tailwindcss()],
   },
   output: 'static',
-  base: '/CNRBLOG1.1/',
+  base: '/cnrblog/',
 });
