@@ -1,4 +1,5 @@
 ---
+import { BASE_PATH } from "../../../consts";
 import Polaroid from "../../commons/Polaroid.astro";
 import SectionWrapper from "../../commons/SectionWrapper.astro";
 
@@ -9,11 +10,11 @@ const posts = (await getCollection("blog"))
   .slice(0, 3); // solo gli ultimi 3
 ---
 
-<SectionWrapper sectionId="latest-posts-section" sectionAriaLabelledby="latest-posts-heading" sectionRole="region" data-aos="fade-zoom-in" data-aos-easing="ease-in-back" data-aos-offset="200"  h2Class="text-center uppercase" divAriaLabelledby="latest-posts" href={`${Astro.site}/blog`} btnAriaLabel="Vai alla pagina Blog" h2="Ultimi commenti non richiesti" btnContent="Tutti i commenti non richiesti" divId="latest-posts">
+<SectionWrapper sectionId="latest-posts-section" sectionAriaLabelledby="latest-posts-heading" sectionRole="region" data-aos="fade-zoom-in" data-aos-easing="ease-in-back" data-aos-offset="200"  h2Class="text-center uppercase" divAriaLabelledby="latest-posts" href={`${BASE_PATH}/blog/`} btnAriaLabel="Vai alla pagina Blog" h2="Ultimi commenti non richiesti" btnContent="Tutti i commenti non richiesti" divId="latest-posts">
   <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
     <div class="grid gap-8 sm:grid-cols-2 lg:grid-cols-3 place-items-center">
       {posts.map((post, index) => {
-        return (<a href={`${Astro.site}/blog/${post.id}/`} class="relative rounded-md p-3 w-full max-w-xs transform hover:-rotate-1 hover:scale-105 transition duration-300 group text-black! polaroid-link" aria-label={`Vai all'articolo: ${post.data.title}`}>
+        return (<a href={`${BASE_PATH}/blog/${post.id}/`} class="relative rounded-md p-3 w-full max-w-xs transform hover:-rotate-1 hover:scale-105 transition duration-300 group text-black! polaroid-link" aria-label={`Vai all'articolo: ${post.data.title}`}>
           <Polaroid src={post.data.heroImage?.src} alt={post.data.heroImgAlt || post.data.title} aos={"fade-up"} caption={post.data.title} class={`relative bg-white p-3 w-full shadow-[1rem_1rem_1rem_-0.5rem_rgba(0,0,0,0.54)] my-3 lg:my-16 mx-auto text-right transition-all duration-300 ease-in-out hover:-top-4 hover:cursor-pointer`} isLast={index === 0} description={post.data.description} itemtype="http://schema.org/BlogPosting" year={`${post.data.pubDate.getUTCDay()}/${post.data.pubDate.getUTCMonth()}/${post.data.pubDate.getUTCFullYear()}`} />
           </a>
       )})}

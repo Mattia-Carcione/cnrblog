@@ -1,10 +1,11 @@
 ---
 import LogoImg from '../../assets/logo.png';
+import { BASE_PATH } from '../../consts';
 
 import HeaderLink from "../utilities/HeaderLink.astro";
 ---
 
-<HeaderLink href={`${Astro.site}/`} aria-label="Torna alla home" class:list={"flex items-center space-x-2"}>
+<HeaderLink href={`${BASE_PATH}/`} aria-label="Torna alla home" class:list={"flex items-center space-x-2"}>
     <img src={LogoImg.src} alt="Logo del sito" class="h-19 p-2 w-auto" />
     <span class="sr-only">Home</span>
 </HeaderLink>

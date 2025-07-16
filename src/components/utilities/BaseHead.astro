@@ -2,7 +2,7 @@
 // Import the global.css file here so that it is included on
 // all pages through the use of the <BaseHead /> component.
 import '../../styles/global.css';
-import { SITE_TITLE } from '../../consts';
+import { BASE_PATH, SITE_TITLE } from '../../consts';
 import type { ImageMetadata } from 'astro';
 import FallbackImage from '../../assets/logo.png';
 import { getOrganizationStructuredData } from '../../utils/structuredData';
@@ -16,7 +16,7 @@ interface Props {
 const canonicalURL = new URL(Astro.url.pathname, Astro.site);
 const { title, description, image = FallbackImage } = Astro.props;
 const siteUrl = Astro.site?.toString() ?? 'http://localhost:4321';
-const logoUrl = new URL('/favicon.png', Astro.site).toString();
+const logoUrl = new URL(`{${BASE_PATH}/favicon.png`, Astro.site).toString();
 const orgName = SITE_TITLE;
 const JSONstructuredData = getOrganizationStructuredData(orgName, siteUrl, logoUrl);
 ---
@@ -26,9 +26,9 @@ const JSONstructuredData = getOrganizationStructuredData(orgName, siteUrl, logoU
 <meta name="viewport" content="width=device-width,initial-scale=1" />
 
 <!-- Favicon base -->
-<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-<link rel="icon" type="image/png" href="/favicon.png" sizes="32x32" />
-<link rel="shortcut icon" href="/favicon.ico" />
+<link rel="icon" type="image/svg+xml" href=`{${BASE_PATH}/favicon.svg` />
+<link rel="icon" type="image/png" href=`{${BASE_PATH}/favicon.png` sizes="32x32" />
+<link rel="shortcut icon" href=`{${BASE_PATH}/favicon.ico` />
 
 <link rel="sitemap" href="/sitemap-index.xml" />
 <link rel="alternate" type="application/rss+xml" title={SITE_TITLE} href={new URL('rss.xml', Astro.site)} />

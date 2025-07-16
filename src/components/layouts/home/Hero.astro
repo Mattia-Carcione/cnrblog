@@ -1,5 +1,5 @@
 ---
-import { SITE_DESCRIPTION } from "../../../consts";
+import { BASE_PATH, SITE_DESCRIPTION } from "../../../consts";
 import { getWebPageStructuredData } from "../../../utils/structuredData";
 import heroImg from '../../../assets/homeImgs/heroImg.jpeg';
 import ColSectionWrapper from "../../commons/ColSectionWrapper.astro";
@@ -37,7 +37,7 @@ const JSONstructuredData = getWebPageStructuredData(structuredData);
             Aiutare le persone curiose a vivere <em>esperienze insolite</em> attraverso <em>guide autentiche</em>, <em>fotografie uniche</em> e <em>recensioni ironiche</em>.
         </p>
         <div class="flex justify-center lg:justify-start">
-            <a href={`${Astro.site}/about`} aria-label="Vai alla pagina Chi Sono" class="btn-funky">
+            <a href={`${BASE_PATH}/about/`} aria-label="Vai alla pagina Chi Sono" class="btn-funky">
                 <span class="btn-funky-content">
                     Conoscimi meglio
                 </span>
