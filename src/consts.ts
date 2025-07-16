@@ -16,12 +16,14 @@ export const INSTA_SHOOT_SITE = 'https://www.instagram.com/lefotografiediannaa?u
 
 /* UTILS */
 export const IMG_PLACEHOLDER = 'https://placehold.co/400x400';
+
+const BASE_PATH = '/cnrblog';
 export const NAV_LINKS = [
-  { label: "Home", href: "/" },
-  { label: "Blog", href: "/blog" },
-  { label: "Mini-Guide", href: "/guide" },
-  { label: "Chi Sono", href: "/about" },
-  { label: "Contatti", href: "/contatti" },
+  { label: "Home", href: `${BASE_PATH}/` },
+  { label: "Blog", href: `${BASE_PATH}/blog` },
+  { label: "Mini-Guide", href: `${BASE_PATH}/guide` },
+  { label: "Chi Sono", href: `${BASE_PATH}/about` },
+  { label: "Contatti", href: `${BASE_PATH}/contatti` },
 ];
 
 export const SOCIAL_LINKS = [

@@ -5,7 +5,7 @@ import Img from '../../../assets/homeImgs/miniGuidePolaroid.png';
 ---
 
 
-<SectionWrapper h2="Scarica le mini guide" h2Class="sr-only" href="/mini-guide" btnContent="Scarica le mini guide" btnAriaLabel="vai alle mini guide" sectionClass="relative mt-[7rem]!" sectionRole="region" sectionId="mini-guide-section" sectionAriaLabelledby="mini-guide-heading" divClass="h-3/4 px-25" divAriaLabelledby="mini-guide">
+<SectionWrapper h2="Scarica le mini guide" h2Class="sr-only" href={`${Astro.site}/mini-guide`} btnContent="Scarica le mini guide" btnAriaLabel="vai alle mini guide" sectionClass="relative mt-[7rem]!" sectionRole="region" sectionId="mini-guide-section" sectionAriaLabelledby="mini-guide-heading" divClass="h-3/4 px-25" divAriaLabelledby="mini-guide">
     <!-- 📸 Polaroid container -->
     <div class="absolute left-1/2 -translate-x-1/2 -top-36 w-[300px] h-[250px] sm:w-[350px] sm:h-[300px] pointer-events-none z-20">
         <img src={Img.src} alt="Mini guida 1" class="w-full" data-aos="fade-down" data-aos-delay="500" data-aos-easing="ease-in-out" />
