@@ -5,16 +5,21 @@ import { BASE_PATH } from '../../consts';
 type Props = HTMLAttributes<'a'>;
 
 const { href, class: className, ...props } = Astro.props;
-const pathname = Astro.url.pathname;
 
-// Normalizza href e pathname rimuovendo BASE_PATH
-const cleanHref = href?.toString().replace(BASE_PATH, '') || '';
-const cleanPath = pathname.replace(BASE_PATH, '');
+function normalizePath(path: string): string {
+  const cleaned = path
+    .replace(BASE_PATH, '')      // rimuove '/cnrblog'
+    .replace(/\/+$/, '')         // rimuove slash finale
+    .trim();
+  return cleaned === '' ? '/' : cleaned;
+}
 
-// Match se stessi path
-const isActive = cleanHref === cleanPath || cleanHref === '/' && cleanPath === '';
+const pathname = normalizePath(Astro.url.pathname);
+const cleanHref = normalizePath(href?.toString() || '/');
+
+const isActive = pathname === cleanHref;
 ---
 
-<a href={href} class:list={[className, { active: isActive }]} {...props}>
-	<slot />
+<a href={href} class={className} aria-current={isActive ? 'page' : undefined} {...props}>
+  <slot />
 </a>
