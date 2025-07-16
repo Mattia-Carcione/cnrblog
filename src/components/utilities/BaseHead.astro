@@ -16,7 +16,7 @@ interface Props {
 const canonicalURL = new URL(Astro.url.pathname, Astro.site);
 const { title, description, image = FallbackImage } = Astro.props;
 const siteUrl = Astro.site?.toString() ?? 'http://localhost:4321';
-const logoUrl = new URL(`{${BASE_PATH}/favicon.png`, Astro.site).toString();
+const logoUrl = new URL(`${BASE_PATH}/favicon.png`, Astro.site).toString();
 const orgName = SITE_TITLE;
 const JSONstructuredData = getOrganizationStructuredData(orgName, siteUrl, logoUrl);
 ---
@@ -26,17 +26,17 @@ const JSONstructuredData = getOrganizationStructuredData(orgName, siteUrl, logoU
 <meta name="viewport" content="width=device-width,initial-scale=1" />
 
 <!-- Favicon base -->
-<link rel="icon" type="image/svg+xml" href=`{${BASE_PATH}/favicon.svg` />
-<link rel="icon" type="image/png" href=`{${BASE_PATH}/favicon.png` sizes="32x32" />
-<link rel="shortcut icon" href=`{${BASE_PATH}/favicon.ico` />
+<link rel="icon" type="image/svg+xml" href=`${BASE_PATH}/favicon.svg` />
+<link rel="icon" type="image/png" href=`${BASE_PATH}/favicon.png` sizes="32x32" />
+<link rel="shortcut icon" href=`${BASE_PATH}/favicon.ico` />
 
 <link rel="sitemap" href="/sitemap-index.xml" />
 <link rel="alternate" type="application/rss+xml" title={SITE_TITLE} href={new URL('rss.xml', Astro.site)} />
 <meta name="generator" content={Astro.generator} />
 
 <!-- Font preloads -->
-<link rel="preload" href="/fonts/atkinson-regular.woff" as="font" type="font/woff" crossorigin />
-<link rel="preload" href="/fonts/atkinson-bold.woff" as="font" type="font/woff" crossorigin />
+<link rel="preload" href=`${BASE_PATH}/fonts/atkinson-regular.woff` as="font" type="font/woff" crossorigin />
+<link rel="preload" href=`${BASE_PATH}/fonts/atkinson-bold.woff` as="font" type="font/woff" crossorigin />
 
 <!-- Google Fonts -->
 <link href="https://fonts.googleapis.com/css2?family=Chewy&family=Fredoka:wght@400;500;600&family=Quicksand:wght@400;500&family=Rock+Salt&display=swap" rel="stylesheet">
