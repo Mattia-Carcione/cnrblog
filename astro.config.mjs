@@ -10,5 +10,7 @@ export default defineConfig({
 	integrations: [mdx(), sitemap()],
 	vite: {
     plugins: [tailwindcss()],
-  }
+  },
+  output: 'static',
+  base: '/cnrblog/',
 });
