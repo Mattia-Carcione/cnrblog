@@ -5,7 +5,7 @@
 /* SITE */
 export const SITE_TITLE = 'commenti.non.richiesti';
 export const COMPANY_NAME = 'commenti.non.richiesti';
-export const SITE_DESCRIPTION = 'Scopri luoghi originali. Recensioni vere, esperienze autentiche e pratiche mini-guide.';
+export const SITE_DESCRIPTION = 'Scopri luoghi originali. Recensioni vere, esperienze autentiche.';
 
 /* SOCIAL */
 export const INSTA_SITE = 'https://www.instagram.com/commenti.non.richiesti?utm_source=ig_web_button_share_sheet&igsh=ZDNlZDc0MzIxNw==';
@@ -21,7 +21,6 @@ export const BASE_PATH = '/cnrblog';
 export const NAV_LINKS = [
   { label: "Home", href: `${BASE_PATH}/` },
   { label: "Blog", href: `${BASE_PATH}/blog` },
-  { label: "Mini-Guide", href: `${BASE_PATH}/guide` },
   { label: "Chi Sono", href: `${BASE_PATH}/about` },
   { label: "Contatti", href: `${BASE_PATH}/contatti` },
 ];

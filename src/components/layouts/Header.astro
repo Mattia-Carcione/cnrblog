@@ -2,7 +2,6 @@
 import Logo from "../commons/Logo.astro";
 
 import NavLinks from '../commons/NavLinks.astro';
-import HambButton from '../commons/HambButton.astro';
 import IconsLinks from '../commons/IconsLinks.astro';
 ---
 <header class="sticky top-0 left-0 z-100" id="header">
@@ -33,19 +32,26 @@ import IconsLinks from '../commons/IconsLinks.astro';
           </div>
 
           <!-- Social icons Mobile -->
-          <IconsLinks showSearch={true} class:list={"flex space-x-3 justify-center items-center"} />
+          <IconsLinks showSearch={true} class:list={"flex space-x-2 justify-center items-center"} />
 
           <!-- Hamburger button -->
-          <HambButton />
-        </div>
+          <button id="menu-toggle" class="flex flex-col justify-center items-center w-10 h-10 focus:outline-none cursor-pointer" aria-label="Apri menu di navigazione" aria-expanded="false" aria-controls="mobile-menu">
+            <span class="line w-6 h-0.5 mb-1 transition-transform duration-300"></span>
+            <span class="line w-6 h-0.5 mb-1 transition-opacity duration-300"></span>
+            <span class="line w-6 h-0.5 transition-transform duration-300"></span>
+        </button>   
+
       </div>
     </div>
-
-    <!-- Mobile Menu Links -->
-    <div id="mobile-menu" class="md:hidden hidden" aria-hidden="true">
-      <ul role="list" class="flex items-center justify-evenly py-4 md:hidden">
-        <NavLinks  />
-      </ul>
-    </div>
-  </nav>
+  </div>
+  
+  <!-- Mobile Menu Links -->
+  <div id="mobile-menu" class="md:hidden hidden" aria-hidden="true">
+    <ul role="list" class="flex items-center justify-evenly py-4 md:hidden">
+      <NavLinks  />
+    </ul>
+  </div>
+</nav>
 </header>
+
+<script src="../../scripts/components/header.js"></script>

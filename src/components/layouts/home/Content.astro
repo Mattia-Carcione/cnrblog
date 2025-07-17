@@ -1,22 +1,15 @@
 ---
 import ColSectionWrapper from "../../commons/ColSectionWrapper.astro"
-
-import { IMG_PLACEHOLDER } from "../../../consts"
+import ShadowImg from "../../commons/ShadowImg.astro"
 import CtaButton from "../../commons/CtaButton.astro"
+
 const IMG_ALT = 'img placeholder'
 ---
 
-<section id="content" class="bg-(--color-primary)">
+<section id="content" class="bg-(--color-primary)" aria-label="Contenuto del blog commenti.non.richiesti">
     <ColSectionWrapper idLeftCol="" idRightCol="">
         <Fragment slot={"left"}>
-            <div class="relative inline-block">
-                <!-- Ombra rettangolare animata -->
-                <div id="img-before" class="absolute top-4 left-4 w-full h-full bg-(--bg-color) z-0">
-                </div>
-    
-                <!-- Immagine vera sopra -->
-                <img id="hero-img" src={IMG_PLACEHOLDER} alt={IMG_ALT} class="w-full max-w-md shadow-xl/30 object-cover relative z-10" loading="lazy" />
-            </div>
+            <ShadowImg alt={IMG_ALT}, shadowOffsetLeft = "-left-4" />
         </Fragment>
     
         <Fragment slot={"right"}>
@@ -29,14 +22,7 @@ const IMG_ALT = 'img placeholder'
     </ColSectionWrapper>
     <ColSectionWrapper idLeftCol="" idRightCol="" isColReverse="true">
         <Fragment slot={"right"}>
-            <div class="relative inline-block">
-                <!-- Ombra rettangolare animata -->
-                <div id="img-before" class="absolute top-4 left-4 w-full h-full bg-(--bg-color) z-0">
-                </div>
-    
-                <!-- Immagine vera sopra -->
-                <img id="hero-img" src={IMG_PLACEHOLDER} alt={IMG_ALT} class="w-full max-w-md shadow-xl/30 object-cover relative z-10" loading="lazy" />
-            </div>
+            <ShadowImg alt={IMG_ALT}, shadowOffsetLeft = "left-4" />
         </Fragment>
     
         <Fragment slot={"left"}>
@@ -49,14 +35,7 @@ const IMG_ALT = 'img placeholder'
     </ColSectionWrapper>
     <ColSectionWrapper idLeftCol="" idRightCol="">
         <Fragment slot={"left"}>
-            <div class="relative inline-block">
-                <!-- Ombra rettangolare animata -->
-                <div id="img-before" class="absolute top-4 left-4 w-full h-full bg-(--bg-color) z-0">
-                </div>
-    
-                <!-- Immagine vera sopra -->
-                <img id="hero-img" src={IMG_PLACEHOLDER} alt={IMG_ALT} class="w-full max-w-md shadow-xl/30 object-cover relative z-10" loading="lazy" />
-            </div>
+            <ShadowImg alt={IMG_ALT}, shadowOffsetLeft = "-left-4" />
         </Fragment>
     
         <Fragment slot={"right"}>

@@ -3,9 +3,9 @@ const { href, btnContent, AriaLabel, class:className, ...props } = Astro.props;
 ---
 
 <div {...props} class={className}>
-    <a href={href} aria-label={AriaLabel} class="a-cta">
-        <button class="cta" aria-label="cta-button">
-            {btnContent}
+    <a href={href} aria-label={AriaLabel}>
+        <button class="cta" aria-label="cta-button ">
+           <span class="cta-content">{btnContent}</span> 
         </button>
     </a>
 </div>

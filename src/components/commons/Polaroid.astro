@@ -1,4 +1,5 @@
 ---
+import FormattedDate from "../utilities/FormattedDate.astro";
 import Icon from "../utilities/Icon.astro";
 
 const { src, alt, caption, location, year, class: className, description, aos, aosDelay, aosEasing, aosOffset, isLast = false, ...props } = Astro.props;
@@ -11,7 +12,7 @@ const { src, alt, caption, location, year, class: className, description, aos, a
           <Icon name="newPost" class="text-red-500 m-0 p-0 w-full h-full animate-[pulse_0.5s_ease-in-out_infinite]" id="newPost" />
       </span>)}
     <div class="relative">
-      <img src={src} alt={alt} class="max-w-full h-full object-cover m-0" loading="lazy" itemprop="image" />
+      <img src={src} alt={alt} class="w-full h-auto max-h-[300px] sm:max-h-[400px] object-cover" loading="lazy" itemprop="image" />
       
       <div class="absolute inset-0 bg-white bg-opacity-90 flex items-center justify-center opacity-0 group-hover:opacity-85 transition-opacity duration-300" aria-hidden="true">
         <p class="px-4 text-sm text-black text-center line-clamp-3">
@@ -22,7 +23,7 @@ const { src, alt, caption, location, year, class: className, description, aos, a
     <figcaption class="font-[Rock_Salt] p-2 text-xs!" itemprop="headline">
       {caption || `${location}, ${year}`}
       <hr class="py-2 mt-2">
-      {`${year}`}
+      <FormattedDate date={year} />
     </figcaption>
   </figure>
   <meta itemprop="datePublished" content={year} />
@@ -30,4 +31,6 @@ const { src, alt, caption, location, year, class: className, description, aos, a
   <span itemprop="author" itemscope itemtype="https://schema.org/Person">
     <meta itemprop="name" content="Anna" />
   </span>
+  <meta itemprop="description" content={description} />
+  <meta itemprop="headline" content={caption || `${location}, ${year}`} />
 </article>

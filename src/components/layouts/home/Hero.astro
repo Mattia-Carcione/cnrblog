@@ -4,6 +4,7 @@ import { getWebPageStructuredData } from "../../../utils/structuredData";
 import heroImg from '../../../assets/homeImgs/heroImg.jpeg';
 import ColSectionWrapper from "../../commons/ColSectionWrapper.astro";
 import CtaButton from "../../commons/CtaButton.astro";
+import ShadowImg from "../../commons/ShadowImg.astro";
 
 const IMG_ALT = "Foto di Anna, autrice del blog commenti.non.richiesti.";
 const siteUrl = Astro.site?.toString() ?? 'http://localhost:4321';
@@ -33,14 +34,7 @@ const JSONstructuredData = getWebPageStructuredData(structuredData);
         </Fragment>
     
         <Fragment slot="right">
-            <div class="relative inline-block">
-                <!-- Ombra rettangolare animata -->
-                <div id="img-before" class="absolute top-4 left-4 w-full h-full bg-(--color-primary) z-0">
-                </div>
-    
-                <!-- Immagine vera sopra -->
-                <img id="hero-img" src={heroImg.src} alt={IMG_ALT} class="w-full max-w-md shadow-xl/30 object-cover relative z-10" loading="lazy" />
-            </div>
+            <ShadowImg src={heroImg.src} alt={IMG_ALT}, shadowOffsetLeft = "left-4" bgColor="bg-(--color-primary)"/>
         </Fragment>
     </ColSectionWrapper>
 </section>

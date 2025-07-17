@@ -203,18 +203,35 @@ header nav a[aria-current="page"] {
 button.cta {
   font-family: var(--font-heading);
   font-size: var(--fs-md);
-  padding: var(--space-sm) var(--space-md);
-  background-color: var(--color-accent);   /* rosa acceso */
+  padding: var(--space-xs) var(--space-sm);
   color: var(--color-text);                 /* bianco */
-  border: 2px solid var(--color-french-rose);
   cursor: pointer;
-  transition: all var(--transition-fast);
+  border-bottom: 3px solid var(--color-french-rose);
+  background: transparent;
+  border-radius: 0.25rem; /* quadrato morbido */
+  transition: all 0.3s ease-in-out;
+  position: relative;
+  overflow: hidden;
+}
+
+button.cta::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: var(--color-hover); /* il tuo rosa+viola */
+  z-index: 0;
+  transform: translateY(100%);
+  transition: transform 0.4s ease;
 }
 
 button.cta:hover {
-  background-color: var(--color-french-rose);        /* giallo chiaro */
   color: var(--color-contrast);                     /* testo scuro per contrasto */
   border-color: var(--color-accent);       /* bordo rosa */
+  transition: border 0.3s;
+}
+
+button.cta:hover::before {
+  transform: translateY(0%);
 }
 
 button.cta:active {
@@ -224,6 +241,21 @@ button.cta:active {
   transform: scale(0.97);
 }
 
+.cta-content {
+  font-family: 'Chewy', sans-serif;
+  position: relative;
+  z-index: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--color-french-rose);
+  font-size: 1.25rem;
+  transition: color 0.3s;
+}
+
+button.cta:hover .cta-content {
+  color: var(--color-accent);
+}
 
 /* ===============================
    🍔 MENU TOGGLE
