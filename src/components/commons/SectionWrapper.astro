@@ -7,9 +7,10 @@ const { sectionId, sectionAriaLabelledby, sectionRole, sectionClass, divClass, d
 <section id={sectionId} aria-labelledby={sectionAriaLabelledby} role={sectionRole} class={sectionClass} {...props}>
   <h2 class={h2Class} id={sectionAriaLabelledby}>{h2}</h2>
 
-  <div class=`bg-gradient-to-b from-[#CDABED] via-[#F5EEFB] to-[#FFFFEB] rounded-lg ${divClass}` aria-labelledby={divAriaLabelledby} id={divId}>
+  <div class=`${divClass}` aria-labelledby={divAriaLabelledby} id={divId}>
     <slot />
-    <CtaButton href={href} btnContent={btnContent} ariaLabel={bntAriaLabel} />
+
+    <CtaButton href={href} btnContent={btnContent} ariaLabel={bntAriaLabel} class="flex items-center justify-center" />
   </div>
 
 </section>

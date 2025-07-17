@@ -204,24 +204,26 @@ button.cta {
   font-family: var(--font-heading);
   font-size: var(--fs-md);
   padding: var(--space-sm) var(--space-md);
-  background-color: var(--color-french-rose);
-  color: var(--color-contrast);
-  border: 2px solid var(--color-primary);
+  background-color: var(--color-accent);   /* rosa acceso */
+  color: var(--color-text);                 /* bianco */
+  border: 2px solid var(--color-french-rose);
   cursor: pointer;
   transition: all var(--transition-fast);
 }
 
 button.cta:hover {
-  background-color: var(--color-primary);
-  border: 2px solid var(--color-french-rose);
-  color: var(--color-contrast);
+  background-color: var(--color-french-rose);        /* giallo chiaro */
+  color: var(--color-contrast);                     /* testo scuro per contrasto */
+  border-color: var(--color-accent);       /* bordo rosa */
 }
 
 button.cta:active {
-  transform: scale(0.98);
-  background-color: var(--color-hover);
-  border-color: var(--color-accent);
+  background-color: var(--color-hover);         /* viola scuro */
+  color: var(--color-contrast);                 /* bianco */
+  border-color: var(--color-accent);            /* giallo bordo */
+  transform: scale(0.97);
 }
+
 
 /* ===============================
    🍔 MENU TOGGLE

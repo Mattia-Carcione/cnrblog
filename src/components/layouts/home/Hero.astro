@@ -5,7 +5,7 @@ import heroImg from '../../../assets/homeImgs/heroImg.jpeg';
 import ColSectionWrapper from "../../commons/ColSectionWrapper.astro";
 import CtaButton from "../../commons/CtaButton.astro";
 
-const IMG_ALT = "Foto di Anna, autrice del blog.";
+const IMG_ALT = "Foto di Anna, autrice del blog commenti.non.richiesti.";
 const siteUrl = Astro.site?.toString() ?? 'http://localhost:4321';
 const structuredData = {
     "description": SITE_DESCRIPTION,
@@ -18,29 +18,31 @@ const structuredData = {
 const JSONstructuredData = getWebPageStructuredData(structuredData);
 ---
 
-<ColSectionWrapper idSection="hero" idLeftCol="hero-col-left" idRightCol="hero-col-right" isColReverse="true"  role="region" aria-label="Sezione introduttiva del blog commenti.non.richiesti">
-    <Fragment slot="left">
-        <h1 class="leading-tight" id="homepage-heading">
-            Hello, Crazy! 🤪
-            <br>
-            Benvenuti su <strong class="gradient-text">commenti.non.richiesti</strong>
-        </h1>
-        <h2 class="max-w-full" style="font-size:medium; color: var(--color-text);" id="payoff">
-            <em>Recensisco tutto. Anche quello che non volevi sapere.</em>
-        </h2>
-        <CtaButton href={`#hero`} btnContent={"Scopri di più"} class="flex items-center justify-start" ariaLabel="Scopri di più" />
-    </Fragment>
-
-    <Fragment slot="right">
-        <div class="relative inline-block">
-            <!-- Ombra rettangolare animata -->
-            <div id="img-before" class="absolute top-4 left-4 w-full h-full bg-[#4C206D]/30 animate-pulse transition-all duration-500 ease-in-out z-0 rounded-t-[50%]">
+<section id="hero" role="region" aria-label="Sezione introduttiva del blog commenti.non.richiesti">
+    <ColSectionWrapper idLeftCol="hero-col-left" idRightCol="hero-col-right" isColReverse="true">
+        <Fragment slot="left">
+            <h1 class="leading-tight" id="homepage-heading">
+                Hello, Crazy! 🤪
+                <br>
+                Benvenuti su <strong class="gradient-text">commenti.non.richiesti</strong>
+            </h1>
+            <h2 class="max-w-full" style="font-size:medium; color: var(--color-text);" id="payoff">
+                <em>Recensisco tutto. Anche quello che non volevi sapere.</em>
+            </h2>
+            <CtaButton href={`#home-content`} btnContent={"Scopri di più"} class="flex items-center justify-start" ariaLabel="Scopri di più" />
+        </Fragment>
+    
+        <Fragment slot="right">
+            <div class="relative inline-block">
+                <!-- Ombra rettangolare animata -->
+                <div id="img-before" class="absolute top-4 left-4 w-full h-full bg-(--color-primary) z-0">
+                </div>
+    
+                <!-- Immagine vera sopra -->
+                <img id="hero-img" src={heroImg.src} alt={IMG_ALT} class="w-full max-w-md shadow-xl/30 object-cover relative z-10" loading="lazy" />
             </div>
-
-            <!-- Immagine vera sopra -->
-            <img id="hero-img" src={heroImg.src} alt={IMG_ALT} class="w-full max-w-md shadow-xl/30 object-cover relative z-10 rounded-t-[50%]" loading="lazy" />
-        </div>
-    </Fragment>
-</ColSectionWrapper>
+        </Fragment>
+    </ColSectionWrapper>
+</section>
 
 <script type="application/ld+json" set:html={JSONstructuredData}/>

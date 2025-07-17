@@ -1,0 +1,70 @@
+---
+import ColSectionWrapper from "../../commons/ColSectionWrapper.astro"
+
+import { IMG_PLACEHOLDER } from "../../../consts"
+import CtaButton from "../../commons/CtaButton.astro"
+const IMG_ALT = 'img placeholder'
+---
+
+<section id="content" class="bg-(--color-primary)">
+    <ColSectionWrapper idLeftCol="" idRightCol="">
+        <Fragment slot={"left"}>
+            <div class="relative inline-block">
+                <!-- Ombra rettangolare animata -->
+                <div id="img-before" class="absolute top-4 left-4 w-full h-full bg-(--bg-color) z-0">
+                </div>
+    
+                <!-- Immagine vera sopra -->
+                <img id="hero-img" src={IMG_PLACEHOLDER} alt={IMG_ALT} class="w-full max-w-md shadow-xl/30 object-cover relative z-10" loading="lazy" />
+            </div>
+        </Fragment>
+    
+        <Fragment slot={"right"}>
+            <h3 style="color: var(--bg-color)">Recensioni? No, commenti spassionati</h3>
+            <p>
+                I miei articoli non sono lunghi papiri tecnici. Sono racconti ironici, con battute, colpi di scena e verità scomode. Se un posto fa schifo, te lo dico con stile. Se è figo, ti ci mando subito.
+            </p>
+            <CtaButton btnContent="Scopri di più" />
+        </Fragment>
+    </ColSectionWrapper>
+    <ColSectionWrapper idLeftCol="" idRightCol="" isColReverse="true">
+        <Fragment slot={"right"}>
+            <div class="relative inline-block">
+                <!-- Ombra rettangolare animata -->
+                <div id="img-before" class="absolute top-4 left-4 w-full h-full bg-(--bg-color) z-0">
+                </div>
+    
+                <!-- Immagine vera sopra -->
+                <img id="hero-img" src={IMG_PLACEHOLDER} alt={IMG_ALT} class="w-full max-w-md shadow-xl/30 object-cover relative z-10" loading="lazy" />
+            </div>
+        </Fragment>
+    
+        <Fragment slot={"left"}>
+            <h3 style="color: var(--bg-color)">Cerca. Scopri. Ridi.</h3>
+            <p>
+                Puoi cercare tra gli articoli per trovare quello che ti ispira. Magari ti aiuto a vivere la stessa esperienza e portarti a casa un ricordo unico (o almeno una storia da raccontare).
+            </p>
+            <CtaButton btnContent="Scopri di più" />
+        </Fragment>
+    </ColSectionWrapper>
+    <ColSectionWrapper idLeftCol="" idRightCol="">
+        <Fragment slot={"left"}>
+            <div class="relative inline-block">
+                <!-- Ombra rettangolare animata -->
+                <div id="img-before" class="absolute top-4 left-4 w-full h-full bg-(--bg-color) z-0">
+                </div>
+    
+                <!-- Immagine vera sopra -->
+                <img id="hero-img" src={IMG_PLACEHOLDER} alt={IMG_ALT} class="w-full max-w-md shadow-xl/30 object-cover relative z-10" loading="lazy" />
+            </div>
+        </Fragment>
+    
+        <Fragment slot={"right"}>
+            <h3 style="color: var(--bg-color)">Locali strani, ricordi belli</h3>
+            <p>
+                Non troverai il solito bar sotto casa. Qui si parla di posti assurdi, fuori dalle guide classiche — quelli che ti fanno dire “ma dove mi hai portato?”. Cerco esperienze memorabili, e te le racconto senza filtri.
+            </p>
+            <CtaButton btnContent="Scopri di più" />
+        </Fragment>
+    </ColSectionWrapper>
+</section>
