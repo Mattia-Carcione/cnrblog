@@ -1,11 +1,11 @@
 ---
-const { idSection, idLeftCol, idRightCol, isColReverse = false, isCenter = false, ...props } = Astro.props;
+const { idSection, idLeftCol, idRightCol, isColReverse = false, ...props } = Astro.props;
 ---
 
 <section id={idSection} {...props}>
-  <div class=`max-w-7xl mx-auto flex ${isColReverse ? 'flex-col-reverse' : 'flex-col'}  lg:flex-row items-center justify-between gap-12`>
+  <div class=`max-w-7xl mx-auto flex lg:flex-row ${isColReverse ? 'flex-col-reverse' : 'flex-col'} items-center justify-between gap-12 px-6 py-14 sm:px-10 md:px-14 lg:px-18 xl:px-24`>
     <!-- Left: Text -->
-    <div class=`w-full lg:w-1/2 text-center lg:text-left flex flex-col ${isCenter ? 'justify-center items-center' : ''} gap-6` data-aos="fade-right"  data-aos-easing="ease-in-back" id={idLeftCol}>
+    <div class=`w-full lg:w-1/2 flex flex-col gap-6 items-center sm:items-start text-center sm:text-left` data-aos="fade-right"  data-aos-easing="ease-in-back" id={idLeftCol}>
       <slot name="left" />
     </div>
 

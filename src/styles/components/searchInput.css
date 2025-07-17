@@ -1,16 +1,17 @@
-/* SEARCH CONTAINER */
+/* ===============================
+   🔍 SEARCH
+   =============================== */
 .search-container {
   position: relative;
   width: max-content;
   cursor: pointer;
-  /*margin: 10px; /* reset per evitare padding su base flex */
 }
 
 .search-container:hover {
   transition: width 0.3s ease;
-  background: var(--white);
+  background: var(--color-surface);
   border-radius: 20px;
-  border: 2px solid var(--emerald);
+  border: 2px solid var(--color-hover);
   padding: 5px;
   overflow: hidden;
 }
@@ -23,44 +24,54 @@
   opacity: 0;
   font-size: 14px;
   transition: width 0.3s ease, opacity 0.3s ease;
-  color: var(--link-color);
 }
 
 .search-container:hover .search-input {
   width: 150px;
   opacity: 1;
-  color: var(--paragraph-color);
-}
-
-/* SEARCH ICON */
-.search-icon {
-  color: var(--link-color);
-  flex-shrink: 0;
 }
 
 .search-container:hover .search-icon {
-  color: var(--paragraph-color);
+  color: var(--color-hover);
 }
 
-/* SEARCH INPUT MEDIA QUERY */
+.search-icon {
+  flex-shrink: 0;
+}
+
+/* ===============================
+   📱 MEDIA QUERIES (RESPONSIVE)
+   =============================== */
+   /* Mobile first search field always visible */
 @media (max-width: 767px) {
-	.search-container {
-		border: 2px solid var(--emerald);
-		background: var(--navbar-gradient);
-		border-radius: 20px;
-		padding: 5px;
-	}
+  .search-container {
+    border: 2px solid var(--color-hover);
+    background: var(--color-surface);
+    border-radius: 20px;
+    padding: 5px;
+  }
 
-	.search-input {
-		width: 150px;
-		opacity: 1;
-		transition: none;
-		/* disattiva la transizione */
-	}
+  .search-input {
+    width: 150px;
+    opacity: 1;
+    transition: none;
+  }
 
-	.search-container:hover {
-		/* disattiva effetti hover */
-		background: var(--navbar-gradient);
-		border: 2px solid var(--emerald);
-	}
+  .search-icon {
+    color: var(--color-hover);
+  }
+}
+
+/* Breakpoint: xl */
+@media (min-width: 1280px) {
+  .search-input {
+    font-size: var(--fs-md);
+  }
+}
+
+/* Breakpoint: md */
+@media (min-width: 768px) {
+  .search-container:hover .search-input {
+    width: 180px;
+  }
 }

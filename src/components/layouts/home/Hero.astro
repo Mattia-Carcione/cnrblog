@@ -3,6 +3,7 @@ import { BASE_PATH, SITE_DESCRIPTION } from "../../../consts";
 import { getWebPageStructuredData } from "../../../utils/structuredData";
 import heroImg from '../../../assets/homeImgs/heroImg.jpeg';
 import ColSectionWrapper from "../../commons/ColSectionWrapper.astro";
+import CtaButton from "../../commons/CtaButton.astro";
 
 const IMG_ALT = "Foto di Anna, autrice del blog.";
 const siteUrl = Astro.site?.toString() ?? 'http://localhost:4321';
@@ -17,32 +18,17 @@ const structuredData = {
 const JSONstructuredData = getWebPageStructuredData(structuredData);
 ---
 
-<ColSectionWrapper idSection="hero" idLeftCol="hero-col-left" idRightCol="hero-col-right" isColReverse="true">
+<ColSectionWrapper idSection="hero" idLeftCol="hero-col-left" idRightCol="hero-col-right" isColReverse="true"  role="region" aria-label="Sezione introduttiva del blog commenti.non.richiesti">
     <Fragment slot="left">
-        <h1 class="leading-tight uppercase m-0">
+        <h1 class="leading-tight" id="homepage-heading">
             Hello, Crazy! 🤪
+            <br>
             Benvenuti su <strong class="gradient-text">commenti.non.richiesti</strong>
         </h1>
-        <p class="max-w-full m-0">
-            Sono A n n a, 
-            <br class="hidden md:flex">
-            quella che commenta anche quando non serve 😜
-            <br>
-            Sono una <em>fotografa</em> e mi piace andare in cerca di esperienze uniche e divertenti.
-            <br>
-        </p>
-        <p class="max-w-full m-0">
-            La mia missione?
-            <br>
-            Aiutare le persone curiose a vivere <em>esperienze insolite</em> attraverso <em>guide autentiche</em>, <em>fotografie uniche</em> e <em>recensioni ironiche</em>.
-        </p>
-        <div class="flex justify-center lg:justify-start">
-            <a href={`${BASE_PATH}/about/`} aria-label="Vai alla pagina Chi Sono" class="btn-funky">
-                <span class="btn-funky-content">
-                    Conoscimi meglio
-                </span>
-            </a>
-        </div>
+        <h2 class="max-w-full" style="font-size:medium; color: var(--color-text);" id="payoff">
+            <em>Recensisco tutto. Anche quello che non volevi sapere.</em>
+        </h2>
+        <CtaButton href={`#hero`} btnContent={"Scopri di più"} class="flex items-center justify-start" ariaLabel="Scopri di più" />
     </Fragment>
 
     <Fragment slot="right">
