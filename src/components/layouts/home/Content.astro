@@ -4,6 +4,7 @@ import ShadowImg from "../../commons/ShadowImg.astro";
 import CtaButton from "../../commons/CtaButton.astro";
 import { BASE_PATH, IMG_PLACEHOLDER } from "../../../consts";
 import { getItemListStructuredData } from '../../../utils/structuredData';
+import Wave from "../../commons/Wave.astro";
 
 interface SectionData {
   title: string;
@@ -59,6 +60,7 @@ const itemListJSON = getItemListStructuredData(
 );
 ---
 
+<Wave class="-mt-px"/>
 <section id="home-content" aria-label="Contenuto del blog commenti.non.richiesti" class="bg-[var(--color-primary)]" itemscope
   itemtype="https://schema.org/ContactPage">
   {sections.map(({ title, description, alt, imgSrc, reverse, ctaHref, ctaLabel }) => (

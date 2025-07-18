@@ -5,6 +5,7 @@ import SectionWrapper from "../../commons/SectionWrapper.astro";
 import { getItemListStructuredData } from "../../../utils/structuredData";
 
 import { getCollection } from "astro:content";
+import Wave from "../../commons/Wave.astro";
 
 const posts = (await getCollection("blog"))
   .sort((a, b) => new Date(b.data.pubDate).getTime() - new Date(a.data.pubDate).getTime())
@@ -20,9 +21,10 @@ const itemListSchema = getItemListStructuredData(
   }))
 );
 ---
+<Wave position="top" class="-mt-px"/>
 
-<SectionWrapper sectionId="ultimi-post" sectionClass="py-16" sectionAriaLabelledby="latest-posts-heading" sectionRole="region" data-aos="fade-zoom-in" data-aos-easing="ease-in-back" data-aos-offset="200"  h2Class="sr-only" divAriaLabelledby="latest-posts" href={`${BASE_PATH}/blog/`} btnAriaLabel="Vai alla pagina Blog" h2="Ultimi commenti non richiesti" btnContent="Tutti i commenti non richiesti" divId="latest-posts" divClass="w-full flex flex-col justify-center items-center text-center">
-  <h3 class="text-center text-(--color-primary)">Curioso? Leggi i commenti non richiesti</h3>
+<SectionWrapper sectionId="ultimi-post" sectionClass="py-16" sectionAriaLabelledby="latest-posts-heading" sectionRole="region" data-aos="fade-zoom-in" data-aos-easing="ease-in-back" data-aos-offset="200"  h2Class="text-center text-(--color-primary)" divAriaLabelledby="latest-posts" href={`${BASE_PATH}/blog/`} btnAriaLabel="Vai alla pagina Blog" h2="Ultimi post: perché il mondo deve sapere! 😎" btnContent="Tutti i commenti non richiesti" divId="latest-posts" divClass="w-full flex flex-col justify-center items-center text-center">
+  <!-- <h3 class="text-center text-(--color-primary)">Ultimi post: perché il mondo deve sapere! </h3> -->
   <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
     <div class="grid gap-8 sm:grid-cols-2 lg:grid-cols-3 place-items-center">
       {posts.map((post, index) => {
