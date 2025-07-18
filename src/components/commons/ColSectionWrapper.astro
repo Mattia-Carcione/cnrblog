@@ -9,7 +9,7 @@ const { idLeftCol, idRightCol, isColReverse = false, leftColClass, rightColClass
   </div>
 
   <!-- Right -->
-  <div class=`w-full lg:w-1/2 flex flex-col justify-center items-center text-center sm:text-right sm:items-end lg:justify-end h-auto relative ${rightColClass}` data-aos="fade-left" data-aos-easing="ease-in-back" id={idRightCol} >
+  <div class=`w-full lg:w-1/2 flex flex-col justify-center items-center text-center sm:text-right sm:items-end lg:justify-end h-auto relative ${rightColClass ?? ''}` data-aos="fade-left" data-aos-easing="ease-in-back" id={idRightCol} >
     <slot name="right" />
   </div>
 </div>
