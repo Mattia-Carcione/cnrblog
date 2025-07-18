@@ -15,7 +15,7 @@ const currentUrl = Astro.url;
 
 {NAV_LINKS.map((link) => (
   <li class={className} {...props}>
-    <HeaderLink href={link.href} aria-label={`Vai alla sezione ${link.label}`} aria-current={getCurrentPathMatch(currentUrl, link.href)} role="menuitem" class="transition">
+    <HeaderLink href={link.href} aria-label={`Vai alla sezione ${link.label}`} aria-current={getCurrentPathMatch(currentUrl, link.href)} role="menuitem" class="transition uppercase">
       {link.label}
     </HeaderLink>
   </li>

@@ -1,11 +1,12 @@
 ---
-const { href, btnContent, AriaLabel, class:className, ...props } = Astro.props;
+interface Props {
+  btnContent: string;
+  href: string;
+  class?: string;
+}
+const { btnContent, href, class: extraClass = "", ...props } = Astro.props;
 ---
 
-<div {...props} class={className}>
-    <a href={href} aria-label={AriaLabel}>
-        <button class="cta" aria-label="cta-button ">
-           <span class="cta-content">{btnContent}</span> 
-        </button>
-    </a>
-</div>
+<a href={href} class={`cta ${extraClass}`} aria-label={btnContent} {...props}>
+  <span class="cta-content">{btnContent}</span>
+</a>

@@ -1,49 +1,77 @@
 ---
-import ColSectionWrapper from "../../commons/ColSectionWrapper.astro"
-import ShadowImg from "../../commons/ShadowImg.astro"
-import CtaButton from "../../commons/CtaButton.astro"
+import ColSectionWrapper from "../../commons/ColSectionWrapper.astro";
+import ShadowImg from "../../commons/ShadowImg.astro";
+import CtaButton from "../../commons/CtaButton.astro";
+import { BASE_PATH, IMG_PLACEHOLDER } from "../../../consts";
+import { getItemListStructuredData } from '../../../utils/structuredData';
 
-const IMG_ALT = 'img placeholder'
+interface SectionData {
+  title: string;
+  description: string;
+  alt: string;
+  imgSrc?: string;
+  reverse?: boolean;
+  ctaHref: string;
+  ctaLabel: string;
+}
+
+const sections: SectionData[] = [
+  {
+    title: "Recensioni? No, commenti spassionati",
+    description:
+      "I miei articoli non sono lunghi papiri tecnici. Sono racconti ironici, con battute, colpi di scena e verità scomode. Se un posto fa schifo, te lo dico con stile. Se è figo, ti ci mando subito.",
+    alt: "Illustrazione di una recensione divertente",
+    imgSrc: IMG_PLACEHOLDER,
+    ctaHref: "/articoli",
+    ctaLabel: "Scopri di più",
+  },
+  {
+    title: "Cerca. Scopri. Ridi.",
+    description:
+      "Puoi cercare tra gli articoli per trovare quello che ti ispira. Magari ti aiuto a vivere la stessa esperienza e portarti a casa un ricordo unico (o almeno una storia da raccontare).",
+    alt: "Immagine di ricerca articoli",
+    imgSrc: IMG_PLACEHOLDER,
+    reverse: true,
+    ctaHref: "/cerca",
+    ctaLabel: "Scopri di più",
+  },
+  {
+    title: "Locali strani, ricordi belli",
+    description:
+      "Non troverai il solito bar sotto casa. Qui si parla di posti assurdi, fuori dalle guide classiche — quelli che ti fanno dire “ma dove mi hai portato?”. Cerco esperienze memorabili, e te le racconto senza filtri.",
+    alt: "Foto di un locale insolito",
+    imgSrc: IMG_PLACEHOLDER,
+    ctaHref: "/locali",
+    ctaLabel: "Scopri di più",
+  },
+];
+
+// Generazione JSON-LD
+
+const canonicalUrl = `${Astro.site?.toString()}${BASE_PATH.slice(1)}/`;
+const siteUrl = canonicalUrl ?? 'http://localhost:4321';
+const itemListJSON = getItemListStructuredData(
+  sections.map((section) => ({
+    name: section.title,
+    url: `${siteUrl}#home-content`,
+    description: section.description,
+  }))
+);
 ---
 
-<section id="home-content" class="bg-(--color-primary)" aria-label="Contenuto del blog commenti.non.richiesti">
-    <ColSectionWrapper idLeftCol="" idRightCol="">
-        <Fragment slot={"left"}>
-            <ShadowImg alt={IMG_ALT}, shadowOffsetLeft = "-left-4" />
-        </Fragment>
-    
-        <Fragment slot={"right"}>
-            <h3 style="color: var(--bg-color)">Recensioni? No, commenti spassionati</h3>
-            <p>
-                I miei articoli non sono lunghi papiri tecnici. Sono racconti ironici, con battute, colpi di scena e verità scomode. Se un posto fa schifo, te lo dico con stile. Se è figo, ti ci mando subito.
-            </p>
-            <CtaButton btnContent="Scopri di più" />
-        </Fragment>
+<section id="home-content" aria-label="Contenuto del blog commenti.non.richiesti" class="bg-[var(--color-primary)]">
+  {sections.map(({ title, description, alt, imgSrc, reverse, ctaHref, ctaLabel }) => (
+    <ColSectionWrapper isColReverse={reverse}>
+      <Fragment slot={reverse ? "right" : "left"}>
+        <ShadowImg src={imgSrc} alt={alt} shadowOffsetLeft={reverse ? "left-4" : "-left-4"} />
+      </Fragment>
+      <Fragment slot={reverse ? "left" : "right"}>
+        <h2 class="text-2xl font-bold" style="color: var(--bg-color)">{title}</h2>
+        <p>{description}</p>
+        <CtaButton btnContent={ctaLabel} href={ctaHref} />
+      </Fragment>
     </ColSectionWrapper>
-    <ColSectionWrapper idLeftCol="" idRightCol="" isColReverse="true">
-        <Fragment slot={"right"}>
-            <ShadowImg alt={IMG_ALT}, shadowOffsetLeft = "left-4" />
-        </Fragment>
-    
-        <Fragment slot={"left"}>
-            <h3 style="color: var(--bg-color)">Cerca. Scopri. Ridi.</h3>
-            <p>
-                Puoi cercare tra gli articoli per trovare quello che ti ispira. Magari ti aiuto a vivere la stessa esperienza e portarti a casa un ricordo unico (o almeno una storia da raccontare).
-            </p>
-            <CtaButton btnContent="Scopri di più" />
-        </Fragment>
-    </ColSectionWrapper>
-    <ColSectionWrapper idLeftCol="" idRightCol="">
-        <Fragment slot={"left"}>
-            <ShadowImg alt={IMG_ALT}, shadowOffsetLeft = "-left-4" />
-        </Fragment>
-    
-        <Fragment slot={"right"}>
-            <h3 style="color: var(--bg-color)">Locali strani, ricordi belli</h3>
-            <p>
-                Non troverai il solito bar sotto casa. Qui si parla di posti assurdi, fuori dalle guide classiche — quelli che ti fanno dire “ma dove mi hai portato?”. Cerco esperienze memorabili, e te le racconto senza filtri.
-            </p>
-            <CtaButton btnContent="Scopri di più" />
-        </Fragment>
-    </ColSectionWrapper>
+  ))}
 </section>
+
+<script type="application/ld+json" set:html={itemListJSON}/>

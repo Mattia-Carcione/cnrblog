@@ -8,6 +8,28 @@ interface WebPageStructuredDataOptions {
     type?: "WebPage" | "Article" | "BlogPosting"; // estendibile
 }
 
+interface ItemListEntry {
+  name: string;
+  url: string;
+  description?: string;
+}
+
+export function getItemListStructuredData(items: ItemListEntry[]): string {
+  const structuredData = {
+    "@context": "https://schema.org",
+    "@type": "ItemList",
+    "itemListElement": items.map((item, index) => ({
+      "@type": "ListItem",
+      position: index + 1,
+      name: item.name,
+      url: item.url,
+      description: item.description,
+    })),
+  };
+
+  return JSON.stringify(structuredData);
+}
+
 export function getWebPageStructuredData({description, canonicalURL, contentUrl, imageDescription, type = "WebPage",}: WebPageStructuredDataOptions): string {
     const structuredData: any = {
         "@context": "https://schema.org",

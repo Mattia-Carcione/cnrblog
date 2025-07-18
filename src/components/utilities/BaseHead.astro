@@ -14,8 +14,9 @@ interface Props {
 }
 
 const canonicalURL = new URL(Astro.url.pathname, Astro.site);
+const completePath = `${Astro.site?.toString()}${BASE_PATH.slice(1)}/`;
 const { title, description, image = FallbackImage } = Astro.props;
-const siteUrl = Astro.site?.toString() ?? 'http://localhost:4321';
+const siteUrl = completePath ?? 'http://localhost:4321';
 const logoUrl = new URL(`${BASE_PATH}/favicon.png`, Astro.site).toString();
 const orgName = SITE_TITLE;
 const JSONstructuredData = getOrganizationStructuredData(orgName, siteUrl, logoUrl);
@@ -38,7 +39,7 @@ const JSONstructuredData = getOrganizationStructuredData(orgName, siteUrl, logoU
 <link rel="preload" href=`${BASE_PATH}/fonts/Lora-Regular.woff2` as="font" type="font/woff2" crossorigin />
 <link rel="preload" href=`${BASE_PATH}/fonts/Lora-Bold.woff2` as="font" type="font/woff2" crossorigin />
 <link rel="preload" href=`${BASE_PATH}/fonts/Fredoka-Bold.woff2` as="font" type="font/woff2" crossorigin />
-<link rel="preload" href=`${BASE_PATH}/fonts/RockSalt-Regular.woff2` as="font" type="font/woff2" crossorigin />
+<link rel="preload" href=`${BASE_PATH}/fonts/MsMadi-Regular.woff2` as="font" type="font/woff2" crossorigin />
 
 <!-- Canonical URL -->
 <link rel="canonical" href={canonicalURL} />

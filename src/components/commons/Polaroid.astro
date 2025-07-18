@@ -21,16 +21,16 @@ const { src, alt, caption, location, year, class: className, description, aos, a
       </div>
     </div>
     <figcaption class="p-2" itemprop="headline" id="fig-title">
-      <strong>{caption || `${location}, ${year}`}</strong> 
+      <strong>{caption || `${location}, ${new Date(year).toISOString()}`}</strong> 
       <hr class="py-2 mt-2">
       <FormattedDate date={year} />
     </figcaption>
   </figure>
-  <meta itemprop="datePublished" content={year} />
+  <meta itemprop="datePublished" content={new Date(year).toISOString()} />
   <meta itemprop="locationCreated" content={location} />
   <span itemprop="author" itemscope itemtype="https://schema.org/Person">
     <meta itemprop="name" content="Anna" />
   </span>
   <meta itemprop="description" content={description} />
-  <meta itemprop="headline" content={caption || `${location}, ${year}`} />
+  <meta itemprop="headline" content={caption || `${location}, ${new Date(year).toISOString()}`} />
 </article>

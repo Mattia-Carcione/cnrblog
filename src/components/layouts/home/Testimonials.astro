@@ -2,8 +2,13 @@
 import ColSectionWrapper from "../../commons/ColSectionWrapper.astro";
 
 import { INSTA_SHOOT_SITE } from "../../../consts";
+import CtaButton from "../../commons/CtaButton.astro";
 ---
-<section>
+<section id="testimonials" class="bg-(--color-primary)" aria-label="Cosa dicono di me" itemscope itemtype="https://schema.org/Person">
+    <meta itemprop="jobTitle" content="Fotografa Professionista" />
+    <meta itemprop="name" content="Anna Santovito" />
+    <meta itemprop="sameAs" content={INSTA_SHOOT_SITE} />
+    <!-- contenuto -->
     <ColSectionWrapper idSection="hero" idLeftCol="hero-col-left" idRightCol="hero-col-right" >
         <Fragment slot="right">
             <blockquote class="instagram-media" data-instgrm-permalink="https://www.instagram.com/p/BBGQzVAH_4q/?utm_source=ig_embed&amp;utm_campaign=loading" data-instgrm-version="14" style=" background:#FFF; border:0; border-radius:3px; box-shadow:0 0 1px 0 rgba(0,0,0,0.5),0 1px 10px 0 rgba(0,0,0,0.15); margin: 1px; max-width:540px; min-width:326px; padding:0; width:99.375%; width:-webkit-calc(100% - 2px); width:calc(100% - 2px);">
@@ -85,33 +90,37 @@ import { INSTA_SHOOT_SITE } from "../../../consts";
             <h2 class="sr-only">
                 Testimonials
             </h2>
-            <h3 class="uppercase font-bold">
-                Se Nikon approva, puoi fidarti anche tu 📸
+            <h3 class="uppercase font-bold" style="color: var(--bg-color)">
+                Se <strong>Nikon approva</strong>, puoi fidarti anche tu 📸
             </h3>
-            <p class="my-3 leading-relaxed">
-                No, non stai sognando: <strong>Nikon</strong> ha condiviso uno dei miei scatti. 
+            <p class="leading-relaxed" style="margin-bottom: 0;">
+                AH GIÀ, PICCOLO DETTAGLIO: <strong>sono una fotografa.</strong>.
+                E indovina un po’? <strong>Nikon</strong> (<em>sì, quella vera </em>😎) ha condiviso uno dei miei scatti. 
             </p> 
             
-            <p>
-                Se ti stai chiedendo che tipo di foto troverai qui… beh, lasciati dire che la qualità non manca (e nemmeno l'autoironia). 
+            <p class="leading-relaxed" style="margin-bottom: 0;">
+                Se ti stai chiedendo che tipo di foto troverai qui… beh, preparati a mettere via i filtri.
+                <strong>La qualità c’è, l’autoironia pure</strong> — e Photoshop è usato con moderazione (promesso).
             </p>
     
-            <p>
-                Questo blog è per chi ama vedere il mondo da un’altra angolazione — possibilmente con la giusta luce e una battuta pronta. 😉
+            <p class="leading-relaxed" style="margin-bottom: 0;">
+                Questo blog è per chi ama guardare il mondo da angolazioni strane, <strong>magari sdraiato per terra con la reflex in mano e una buona battuta</strong>.
             </p>
     
-            <p class="mb-3">
-                Non troverai foto stock prese da Google. Troverai le mie. E raccontano il mondo come lo vedo io: 
-                con l’occhio curioso, un po’ ribelle… e sempre pronto a immortalare l’insolito.
+            <p class="leading-relaxed" style="margin-bottom: 0;">
+                E no, non ci sono foto stock rubacchiate da Google.
+                Qui trovi le mie: un po’ curiose, un po’ ribelli, spesso fuori dagli schemi… proprio come me.
             </p>
-    
-            <p class="text-base text-violet-600 font-medium">
-                🎯 Vuoi vederne altre?  
-                Dai un’occhiata al mio profilo fotografico su Instagram:  
-                <a href={INSTA_SHOOT_SITE} target="_blank" rel="noopener noreferrer" class="underline" id="social-site">
-                    @lefotografiediannaa
-                </a>
+
+            <p class="leading-relaxed" style="margin-bottom: 0;">
+                <strong>Pronto a vedere l’insolito con occhi nuovi?</strong>
             </p>
+
+            <p class="leading-relaxed" style="margin-bottom: 0;" class="flex"> 
+                Dai un’occhiata al mio profilo fotografico su <strong>Instagram</strong> se vuoi vedere altre mie foto:
+            </p>
+            <CtaButton btnContent="@lefotografiediannaa" href={INSTA_SHOOT_SITE} target="_blank" rel="noopener noreferrer" id="social-site"/>
+
         </Fragment>
     </ColSectionWrapper>
 </section>

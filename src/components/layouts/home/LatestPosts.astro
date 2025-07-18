@@ -2,15 +2,27 @@
 import { BASE_PATH } from "../../../consts";
 import Polaroid from "../../commons/Polaroid.astro";
 import SectionWrapper from "../../commons/SectionWrapper.astro";
+import { getItemListStructuredData } from "../../../utils/structuredData";
 
 import { getCollection } from "astro:content";
 
 const posts = (await getCollection("blog"))
   .sort((a, b) => new Date(b.data.pubDate).getTime() - new Date(a.data.pubDate).getTime())
   .slice(0, 3); // solo gli ultimi 3
+
+const canonicalUrl = `${Astro.site?.toString()}${BASE_PATH.slice(1)}/`;
+const siteUrl = canonicalUrl ?? 'http://localhost:4321';
+const itemListSchema = getItemListStructuredData(
+  posts.map((post, index) => ({
+    name: post.data.title,
+    url: `${siteUrl}blog/${post.id}/`,
+    description: post.data.description,
+  }))
+);
 ---
 
-<SectionWrapper sectionId="latest-posts-section" sectionClass="py-16" sectionAriaLabelledby="latest-posts-heading" sectionRole="region" data-aos="fade-zoom-in" data-aos-easing="ease-in-back" data-aos-offset="200"  h2Class="sr-only" divAriaLabelledby="latest-posts" href={`${BASE_PATH}/blog/`} btnAriaLabel="Vai alla pagina Blog" h2="Ultimi commenti non richiesti" btnContent="Tutti i commenti non richiesti" divId="latest-posts">
+<SectionWrapper sectionId="ultimi-post" sectionClass="py-16" sectionAriaLabelledby="latest-posts-heading" sectionRole="region" data-aos="fade-zoom-in" data-aos-easing="ease-in-back" data-aos-offset="200"  h2Class="sr-only" divAriaLabelledby="latest-posts" href={`${BASE_PATH}/blog/`} btnAriaLabel="Vai alla pagina Blog" h2="Ultimi commenti non richiesti" btnContent="Tutti i commenti non richiesti" divId="latest-posts" divClass="w-full flex flex-col justify-center items-center text-center">
+  <h3 class="text-center">Curioso? Leggi i commenti non richiesti</h3>
   <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
     <div class="grid gap-8 sm:grid-cols-2 lg:grid-cols-3 place-items-center">
       {posts.map((post, index) => {
@@ -21,3 +33,5 @@ const posts = (await getCollection("blog"))
     </div>
   </div>
 </SectionWrapper>
+
+<script type="application/ld+json" set:html={itemListSchema}/>
