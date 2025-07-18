@@ -24,11 +24,12 @@
 
   /* Gradient */
   --bg-gradient: linear-gradient(135deg, var(--color-primary) 0%, var(--color-french-rose) 100%);
+  --bg-btn-cta: linear-gradient(135deg, var(--color-hover) 0%, var(--color-french-rose) 30%, var(--color-hover) 60%, var(--color-french-rose) 100%);
 
   /* === TYPOGRAPHY === */
   --font-heading: 'Fredoka', sans-serif;
-  --font-body: 'Manrope', sans-serif;
-  --font-caption: 'Rock Salt', cursive;
+  --font-body: 'Lora', sans-serif;
+  --font-caption: 'Rock Salt', sans-serif;
 
   /* === FONT SIZES (RIDOTTE) === */
   --fs-xl: clamp(1.75rem, 5vw, 2.5rem); /* ↓ da 2rem~3rem */
@@ -56,7 +57,50 @@
 }
 
 /* ============================= */
-/* 🔤 TYPOGRAPHY & BASICS        */
+/* 🔤 TYPOGRAPHY        */
+/* ============================= */
+@font-face {
+	font-family: 'Lora';
+	src: url('/cnrblog/fonts/Lora-Regular.woff2') format('woff2');
+	font-weight: 400;
+	font-style: normal;
+	font-display: swap;
+}
+
+@font-face {
+	font-family: 'Lora';
+	src: url('/cnrblog/fonts/Lora-Bold.woff2') format('woff2');
+	font-weight: 700;
+	font-style: normal;
+	font-display: swap;
+}
+
+@font-face {
+	font-family: 'Pattaya';
+	src: url('/cnrblog/fonts/Pattaya-Regular.woff2') format('woff2');
+	font-weight: 400;
+	font-style: normal;
+	font-display: swap;
+}
+
+@font-face {
+    font-family: 'Fredoka';
+    src: url('/cnrblog/fonts/Fredoka-Bold.woff2') format('woff2');
+    font-weight: bold;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Rock Salt';
+    src: url('/cnrblog/fonts/RockSalt-Regular.woff2') format('woff2');
+    font-weight: 900;
+    font-style: normal;
+    font-display: swap;
+}
+
+/* ============================= */
+/* 🔤 BASICS        */
 /* ============================= */
 html {
   font-family: var(--font-body);
@@ -90,6 +134,33 @@ body {
 	clip-path: inset(50%);
 	/* added line to stop words getting smushed together (as they go onto separate lines and some screen readers do not understand line feeds as a space */
 	white-space: nowrap;
+}
+
+.gradient-text {
+  background: 
+    linear-gradient(
+      120deg,
+      var(--color-primary) 0%,
+      var(--color-french-rose) 50%,
+      var(--color-primary) 100%
+    ),
+    var(--bg-gradient);
+  background-size: 200% 100%;
+  background-position: -100% 0;
+  color: transparent;
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  animation: shine-text 2.5s infinite linear;
+}
+
+@keyframes shine-text {
+  0% {
+    background-position: 100% 0;
+  }
+  100% {
+    background-position: -100% 0;
+  }
 }
 
 /* ===============================
@@ -146,36 +217,17 @@ p {
   p   { font-size: var(--fs-md); }
 }
 
-.caption {
+/* ===============================
+   📖 TYPOGRAPHY BASICS
+   =============================== */
+figcaption {
   font-family: var(--font-caption);
-  font-size: var(--fs-xs);
+  font-size: var(--fs-sm);
 }
 
-.gradient-text {
-  background: 
-    linear-gradient(
-      120deg,
-      var(--color-primary) 0%,
-      var(--color-french-rose) 50%,
-      var(--color-primary) 100%
-    ),
-    var(--bg-gradient);
-  background-size: 200% 100%;
-  background-position: -100% 0;
-  color: transparent;
-  background-clip: text;
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  animation: shine-text 2.5s infinite linear;
-}
-
-@keyframes shine-text {
-  0% {
-    background-position: 100% 0;
-  }
-  100% {
-    background-position: -100% 0;
-  }
+a {
+  font-family: var(--font-heading);
+  font-size: larger;
 }
 
 /* ===============================
@@ -201,10 +253,7 @@ header nav a[aria-current="page"] {
    🔘 BUTTONS (CTA)
    =============================== */
 button.cta {
-  font-family: var(--font-heading);
-  font-size: var(--fs-md);
   padding: var(--space-xs) var(--space-sm);
-  color: var(--color-text);                 /* bianco */
   cursor: pointer;
   border-bottom: 3px solid var(--color-french-rose);
   background: transparent;
@@ -218,10 +267,16 @@ button.cta::before {
   content: '';
   position: absolute;
   inset: 0;
-  background: var(--color-hover); /* il tuo rosa+viola */
+  background: var(--bg-btn-cta);
   z-index: 0;
   transform: translateY(100%);
-  transition: transform 0.4s ease;
+  background-size: 200% 100%;
+  background-position: left center;
+  transition: background-position 0.8s ease-in-out, transform 0.4s ease;
+}
+
+button.cta:hover::before {
+  background-position: right center;
 }
 
 button.cta:hover {
@@ -242,14 +297,14 @@ button.cta:active {
 }
 
 .cta-content {
-  font-family: 'Chewy', sans-serif;
+  font-family: var(--font-heading);
+  font-size: var(--fs-lg);
   position: relative;
   z-index: 1;
   display: flex;
   align-items: center;
   justify-content: center;
   color: var(--color-french-rose);
-  font-size: 1.25rem;
   transition: color 0.3s;
 }
 

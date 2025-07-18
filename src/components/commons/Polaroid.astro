@@ -20,8 +20,8 @@ const { src, alt, caption, location, year, class: className, description, aos, a
         </p>
       </div>
     </div>
-    <figcaption class="font-[Rock_Salt] p-2 text-xs!" itemprop="headline">
-      {caption || `${location}, ${year}`}
+    <figcaption class="p-2" itemprop="headline" id="fig-title">
+      <strong>{caption || `${location}, ${year}`}</strong> 
       <hr class="py-2 mt-2">
       <FormattedDate date={year} />
     </figcaption>

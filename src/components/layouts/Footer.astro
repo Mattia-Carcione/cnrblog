@@ -8,9 +8,9 @@ import NavLinks from "../commons/NavLinks.astro";
 <!-- Foooter -->
 <footer id="footer" role="contentinfo">
     <h2 class="sr-only">Sezione Footer</h2>
-    <div class="max-w-screen-xl px-4 py-12 mx-auto space-y-8 overflow-hidden sm:px-6 lg:px-8">
+    <div class="max-w-screen-xl px-4 py-4 mx-auto space-y-8 overflow-hidden sm:px-6 lg:px-8">
         <div class="flex justify-center items-center" aria-label="Logo">
-            <Logo />
+            <Logo class="h-32 p-2 w-auto" />
         </div>
 
         <nav class="flex flex-wrap justify-center -mx-5 -my-2" aria-label="Navigazione secondaria">
@@ -23,7 +23,7 @@ import NavLinks from "../commons/NavLinks.astro";
             <IconsLinks class="flex space-x-6" />
         </section>
 
-        <p class="mt-8 leading-6 text-center text-sm!">
+        <p class="mt-4 leading-6 text-center" style="font-size: small; margin-bottom: auto;">
             &copy; 2025 <strong>{COMPANY_NAME}</strong>, Tutti i diritti riservati.
         </p>
     </div>
