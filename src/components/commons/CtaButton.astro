@@ -3,10 +3,11 @@ interface Props {
   btnContent: string;
   href: string;
   class?: string;
+  cntStyle?: string;
 }
-const { btnContent, href, class: extraClass = "", ...props } = Astro.props;
+const { btnContent, href, class: extraClass = "", cntStyle, ...props } = Astro.props;
 ---
 
 <a href={href} class={`cta ${extraClass}`} aria-label={btnContent} {...props}>
-  <span class="cta-content">{btnContent}</span>
+  <span class="cta-content" style={cntStyle}>{btnContent}</span>
 </a>
