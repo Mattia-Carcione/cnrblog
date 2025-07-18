@@ -1,0 +1,25 @@
+---
+// Wave.astro
+const {
+  position = 'bottom', // "top" oppure "bottom" (default: bottom)
+  fill = '#8A4FFF',
+  class: customClass = '',
+} = Astro.props;
+
+const isTop = position === 'top';
+const rotationClass = isTop ? 'rotate-180' : '';
+---
+
+<div class={`w-full overflow-hidden leading-none ${rotationClass} ${customClass}`}>
+  <svg
+    viewBox="0 0 1200 100"
+    preserveAspectRatio="none"
+    class="w-full h-auto"
+    xmlns="http://www.w3.org/2000/svg"
+  >
+    <path
+      d="M0,30 C300,100 900,0 1200,60 L1200,100 L0,100 Z"
+      fill={fill}
+    />
+  </svg>
+</div>

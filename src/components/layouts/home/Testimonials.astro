@@ -3,13 +3,16 @@ import ColSectionWrapper from "../../commons/ColSectionWrapper.astro";
 
 import { INSTA_SHOOT_SITE } from "../../../consts";
 import CtaButton from "../../commons/CtaButton.astro";
+import Wave from "../../commons/Wave.astro";
 ---
+<Wave class="-mb-px"/>
+
 <section id="testimonials" class="bg-(--color-primary)" aria-label="Cosa dicono di me" itemscope itemtype="https://schema.org/Person">
     <meta itemprop="jobTitle" content="Fotografa Professionista" />
     <meta itemprop="name" content="Anna Santovito" />
     <meta itemprop="sameAs" content={INSTA_SHOOT_SITE} />
     <!-- contenuto -->
-    <ColSectionWrapper idSection="hero" idLeftCol="hero-col-left" idRightCol="hero-col-right" >
+    <ColSectionWrapper idSection="hero" idLeftCol="hero-col-left" idRightCol="hero-col-right" isColReverse="true" >
         <Fragment slot="right">
             <blockquote class="instagram-media" data-instgrm-permalink="https://www.instagram.com/p/BBGQzVAH_4q/?utm_source=ig_embed&amp;utm_campaign=loading" data-instgrm-version="14" style=" background:#FFF; border:0; border-radius:3px; box-shadow:0 0 1px 0 rgba(0,0,0,0.5),0 1px 10px 0 rgba(0,0,0,0.15); margin: 1px; max-width:540px; min-width:326px; padding:0; width:99.375%; width:-webkit-calc(100% - 2px); width:calc(100% - 2px);">
                 <div style="padding:16px;">
@@ -119,7 +122,7 @@ import CtaButton from "../../commons/CtaButton.astro";
             <p class="leading-relaxed" style="margin-bottom: 0; color: var(--color-contrast);" class="flex"> 
                 Dai un’occhiata al mio profilo fotografico su <strong>Instagram</strong> se vuoi vedere altre mie foto:
             </p>
-            <CtaButton btnContent="@lefotografiediannaa" href={INSTA_SHOOT_SITE} target="_blank" rel="noopener noreferrer" id="social-site" cntStyle="color: var(--color-accent);" style="  border-bottom-color: var(--color-accent);" />
+            <CtaButton btnContent="@lefotografiediannaa" href={INSTA_SHOOT_SITE} target="_blank" rel="noopener noreferrer" id="social-site" cntClass="text-(--color-accent)" aStyle="  border-bottom-color: var(--color-accent);" />
 
         </Fragment>
     </ColSectionWrapper>

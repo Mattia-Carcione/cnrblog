@@ -22,7 +22,7 @@ const itemListSchema = getItemListStructuredData(
 ---
 
 <SectionWrapper sectionId="ultimi-post" sectionClass="py-16" sectionAriaLabelledby="latest-posts-heading" sectionRole="region" data-aos="fade-zoom-in" data-aos-easing="ease-in-back" data-aos-offset="200"  h2Class="sr-only" divAriaLabelledby="latest-posts" href={`${BASE_PATH}/blog/`} btnAriaLabel="Vai alla pagina Blog" h2="Ultimi commenti non richiesti" btnContent="Tutti i commenti non richiesti" divId="latest-posts" divClass="w-full flex flex-col justify-center items-center text-center">
-  <h3 class="text-center">Curioso? Leggi i commenti non richiesti</h3>
+  <h3 class="text-center text-(--color-primary)">Curioso? Leggi i commenti non richiesti</h3>
   <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
     <div class="grid gap-8 sm:grid-cols-2 lg:grid-cols-3 place-items-center">
       {posts.map((post, index) => {

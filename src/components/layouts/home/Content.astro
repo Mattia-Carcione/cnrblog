@@ -59,19 +59,22 @@ const itemListJSON = getItemListStructuredData(
 );
 ---
 
-<section id="home-content" aria-label="Contenuto del blog commenti.non.richiesti" class="bg-[var(--color-primary)]">
+<section id="home-content" aria-label="Contenuto del blog commenti.non.richiesti" class="bg-[var(--color-primary)]" itemscope
+  itemtype="https://schema.org/ContactPage">
   {sections.map(({ title, description, alt, imgSrc, reverse, ctaHref, ctaLabel }) => (
     <ColSectionWrapper isColReverse={reverse}>
       <Fragment slot={reverse ? "right" : "left"}>
         <ShadowImg src={imgSrc} alt={alt} shadowOffsetLeft={reverse ? "left-4" : "-left-4"} />
       </Fragment>
       <Fragment slot={reverse ? "left" : "right"}>
-        <h2 class="text-2xl font-bold" style="color: var(--color-accent)">{title}</h2>
-        <p style="color: var(--color-contrast);">{description}</p>
-        <CtaButton btnContent={ctaLabel} href={ctaHref} cntStyle="color: var(--color-accent);" style="border-bottom-color: var(--color-accent);"/>
+        <h2 class="text-2xl font-bold text-(--color-accent)">{title}</h2>
+        <p class="text-(--color-contrast)">{description}</p>
+        <CtaButton btnContent={ctaLabel} href={ctaHref} cntClass="text-(--color-accent)" aStyle="border-bottom-color: var(--color-accent);"/>
       </Fragment>
     </ColSectionWrapper>
   ))}
 </section>
+<meta itemprop="name" content="Descrizione del sito" />
+<meta itemprop="url" content={siteUrl} />
 
 <script type="application/ld+json" set:html={itemListJSON}/>

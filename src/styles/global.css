@@ -161,7 +161,6 @@ body {
 h1, h2, h3, h4, h5, h6 {
   font-family: var(--font-heading);
   line-height: var(--lh-tight);
-  color: var(--color-primary);
   margin-bottom: var(--space-sm);
   text-transform: uppercase;
   font-weight: bold;
@@ -296,7 +295,6 @@ header nav a[aria-current="page"] {
   display: flex;
   align-items: center;
   justify-content: center;
-  color: var(--color-primary);
   transition: color 0.3s;
 }
 

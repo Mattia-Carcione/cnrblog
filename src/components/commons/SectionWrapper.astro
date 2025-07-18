@@ -1,7 +1,7 @@
 ---
 import CtaButton from "./CtaButton.astro";
 
-const { sectionId, sectionAriaLabelledby, sectionRole, sectionClass, divClass, divAriaLabelledby, divId, href, bntAriaLabel, h2, h2Class, btnContent, ...props } = Astro.props;
+const { sectionId, sectionAriaLabelledby, sectionRole, sectionClass, divClass, divAriaLabelledby, divId, href, bntAriaLabel, h2, h2Class, btnContent, btnClass, btnStyle, ...props } = Astro.props;
 ---
 
 <section id={sectionId} aria-labelledby={sectionAriaLabelledby} role={sectionRole} class={sectionClass} {...props}>
@@ -9,8 +9,9 @@ const { sectionId, sectionAriaLabelledby, sectionRole, sectionClass, divClass, d
 
   <div class={divClass} aria-labelledby={divAriaLabelledby} id={divId}>
     <slot />
-
-    <CtaButton href={href} btnContent={btnContent} class="flex items-center justify-center" />
+    <div class="flex justify-center my-5">
+      <CtaButton href={href} btnContent={btnContent} class="flex items-center justify-center inline-flex" aStyle={btnStyle} cntClass={btnClass}/>
+    </div>
   </div>
 
 </section>

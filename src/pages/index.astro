@@ -5,10 +5,11 @@ import Hero from '../components/layouts/home/Hero.astro';
 import Footer from '../components/layouts/Footer.astro';
 import LatestPosts from '../components/layouts/home/LatestPosts.astro';
 import HeaderLink from '../components/utilities/HeaderLink.astro';
-
-import { SITE_TITLE, SITE_DESCRIPTION } from '../consts';
 import Content from '../components/layouts/home/Content.astro';
 import Testimonials from '../components/layouts/home/Testimonials.astro';
+import Contact from '../components/layouts/home/Contact.astro';
+
+import { SITE_TITLE, SITE_DESCRIPTION } from '../consts';
 ---
 
 <!doctype html>
@@ -26,6 +27,7 @@ import Testimonials from '../components/layouts/home/Testimonials.astro';
 			<Content />
 			<LatestPosts />
 			<Testimonials />
+			<Contact />
 		</main>
 		<Footer />
 	</body>
