@@ -1,0 +1,65 @@
+---
+import Carousel from "../../commons/Carousel.astro";
+
+import firstContent from "../../../assets/homeCarousel/milano.jpg";
+import secondContent from "../../../assets/homeCarousel/bari.jpeg";
+import thirdContent from "../../../assets/homeCarousel/firenze.jpg";
+import CtaButton from "../../commons/CtaButton.astro";
+
+interface SectionData {
+    src: string;
+    alt: string;
+}
+
+const imgs: SectionData[] = [
+    {
+        src: firstContent.src,
+        alt: "Milano",
+    },
+    {
+        src: secondContent.src,
+        alt: "Bari",
+    },
+    {
+        src: thirdContent.src,
+        alt: "Firenze",
+    },
+];
+---
+
+<section class="flex flex-col justify-center items-center text-center lg:mx-50 mx-5">
+    <h2 class="sr-only">
+        Sezione Mini Guide
+    </h2>
+    <h2 class="text-[var(--color-primary)]">
+        Dove vai se la MiniGuida non ce l’hai? 😜
+    </h2>
+    <p class="text-[var(--color-text)]" itemprop="description">
+        <strong>Spoiler:</strong> non mi fermo a <span itemprop="locationCreated">Milano</span>. Anzi, appena posso, <em>parto</em>. ✈️
+    </p> 
+    <p class="text-[var(--color-text)]" itemprop="description">
+        In questa sezione trovi le mie <strong>mini guide</strong> — <em>piccole ma toste</em> — su <span style="font-style: italic;">posti insoliti</span> <br /> (e anche un po’ normali, dai) che <strong>vale la pena provare</strong>.  
+    </p>
+        
+    <p class="text-[var(--color-text)]" itemprop="description">
+        <strong>Dritte da salvare</strong>, <em>luoghi da esplorare</em> e <q>consigli non richiesti… ma utili</q> 😎.
+
+    </p >
+
+    <p class="text-[var(--color-text)]" itemprop="description">
+        Che tu stia <span style="font-style: italic;">preparando la valigia</span> o semplicemente <strong>sognando ad occhi aperti</strong>, qui qualcosa da segnarti lo trovi. <strong>Promesso.</strong>
+    </p>
+
+    <div class="flex overflow-x-auto snap-x snap-mandatory gap-4 scroll-smooth w-full sm:w-[50%] h-[35%] sm:h-3/4 md:h-1/2">
+        {imgs.map(({ src, alt }) => {
+            return(<Carousel src={src} alt={alt}>
+                <div class="absolute inset-0 bg-white bg-opacity-90 flex items-center justify-center opacity-0 group-hover:opacity-85 transition-opacity duration-300" aria-hidden="true">
+                    <h3 class="px-4 text-[var(--color-text)] text-center line-clamp-3" style="font-family: var(--font-caption); text-transform: none; font-size: var(--fs-xl);">
+                        {alt}
+                    </h3>
+                </div>
+            </Carousel>)
+        })}
+    </div>
+    <CtaButton btnContent="Tutte le Miniguide" btnLabel="Vai alla sezione miniguide" href="about" class="mt-12" />
+</section>

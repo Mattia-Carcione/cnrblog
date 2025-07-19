@@ -4,7 +4,31 @@ import Icon from "../utilities/Icon.astro";
 import '../../styles/components/searchInput.css';
 ---
 
-<div class="search-container group relative flex items-center justify-end" role="search" aria-label="Barra di ricerca">
+<form 
+  class="search-container group relative flex items-center justify-end" 
+  role="search" 
+  aria-label="Barra di ricerca" 
+  action="/cnrblog/blog/search/" 
+  method="GET"
+>
+  <!-- Icona -->
+  <button type="submit" class="search-icon focus:outline-none relative cursor-pointer" aria-label="Avvia la ricerca">
     <Icon name="search" class="w-5 h-5 search-icon icon" />
-    <input type="search" class="search-input" placeholder="Cerca..." aria-label="Campo di ricerca" name="search" id="search-input"/>
-</div>
+    
+    <!-- Tooltip -->
+    <span class="tooltip hidden group-hover:block group-focus:block absolute -bottom-8 left-1/2 -translate-x-1/2 bg-black text-white text-xs px-2 py-1 rounded-md z-10 whitespace-nowrap">
+      Cerca nel sito
+    </span>
+  </button>
+
+  <!-- Input -->
+  <input 
+    type="search" 
+    class="search-input" 
+    placeholder="Cerca..." 
+    aria-label="Campo di ricerca" 
+    name="search" 
+    id="search-input" 
+    autocomplete="off"
+  />
+</form>

@@ -40,6 +40,23 @@
 }
 
 /* ===============================
+   💬 TOOLTIP (Search)
+   =============================== */
+.tooltip {
+  position: absolute;
+  white-space: nowrap;
+  background-color: #000;
+  color: #fff;
+  font-size: 12px;
+  padding: 4px 8px;
+  border-radius: 4px;
+  z-index: 10;
+  pointer-events: none;
+  transform: translateX(-50%);
+  transition: opacity 0.2s ease;
+}
+
+/* ===============================
    📱 MEDIA QUERIES (RESPONSIVE)
    =============================== */
    /* Mobile first search field always visible */

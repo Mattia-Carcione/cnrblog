@@ -1,23 +1,20 @@
 ---
 import { BASE_PATH } from "../../../consts";
 import SectionWrapper from "../../commons/SectionWrapper.astro";
-import Wave from "../../commons/Wave.astro";
 ---
-<Wave position="top" class="-mt-px"/>
-<SectionWrapper h2="Contatti" h2Class="sr-only" href={`${BASE_PATH}/contatti/`} btnContent="📩 Contattami" btnAriaLabel="vai ai contatti" sectionRole="region" sectionId="sezione-contatti" sectionAriaLabelledby="contatti-heading" divClass="flex flex-col justify-evenly sm:m-25 m-5 bg-(--color-primary) py-15 px-10" divAriaLabelledby="contatti" btnClass="text-(--color-accent)" btnStyle="  border-bottom-color: var(--color-accent);">
-<div id="contatti" class="mx-5 text-center text-(--color-contrast)" data-aos="fade-zoom-in" data-aos-delay="500" data-aos-easing="ease-in-out">
-    <h3 class="text-(--color-accent)" itemscope
-  itemtype="https://schema.org/ContactPage">
-      Vuoi contattarmi ma non sai come fare?
-    </h3>
-    <p class="mt-10" style="margin-bottom: 0.5rem;">
-      Lo so, ti sono piaciute le mie foto e vuoi che ne scatti qualcuna anche per te 😜
-    </p>
-    <p style="margin-bottom: 0.5rem;">
-      O forse hai deciso di iniziare una collaborazione insieme 🚀
-    </p>
-    <p style="margin-bottom: 0.5rem;">
-      Beh, se hai qualche suggerimento su un posto che dovrei commentare assolutamente o qualsiasi sia il motivo per cui vuoi contattarmi, che aspetti? Clicca il pulsante qui in basso "📩 Contattami" 
-    </p>
-  </div>
+<SectionWrapper h2="Contatti" h2Class="sr-only" href={`${BASE_PATH}/contatti/`} btnContent="📩 Contattami" btnAriaLabel="vai ai contatti" sectionRole="region" sectionId="sezione-contatti" sectionAriaLabelledby="contatti-heading" divClass="flex flex-col justify-center items-center text-center m-5 lg:m-25 py-15 bg-img md:px-20 px-5 bg-gradient" divAriaLabelledby="contatti" btnClass="text-(--color-accent)" btnStyle="  border-bottom-color: var(--color-accent);">
+  <h3 class="text-(--color-accent)" itemscope
+itemtype="https://schema.org/ContactPage">
+    Vuoi contattarmi ma non sai come fare?
+  </h3>
+  <p class="mt-10 text-(--color-contrast)" style="margin-bottom: 0.5rem;">
+    Lo so, ti sono piaciute le mie foto e vuoi che ne scatti qualcuna anche per te 😜
+  </p>
+  <p class="text-(--color-contrast)" style="margin-bottom: 0.5rem;">
+    O forse hai deciso di iniziare una collaborazione insieme 🚀
+  </p>
+  <p class="text-(--color-contrast)" style="margin-bottom: 0.5rem;">
+    Beh, se hai qualche suggerimento su un posto che dovrei commentare assolutamente 
+    <br />o qualsiasi sia il motivo per cui vuoi contattarmi, che aspetti? Clicca il pulsante qui in basso!
+  </p>
 </SectionWrapper>

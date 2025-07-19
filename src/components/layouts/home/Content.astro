@@ -4,7 +4,9 @@ import ShadowImg from "../../commons/ShadowImg.astro";
 import CtaButton from "../../commons/CtaButton.astro";
 import { BASE_PATH, IMG_PLACEHOLDER } from "../../../consts";
 import { getItemListStructuredData } from '../../../utils/structuredData';
-import Wave from "../../commons/Wave.astro";
+import firstContent from '../../../assets/homeImgs/firstContent.jpg';
+import secondContent from '../../../assets/homeImgs/secondContent.jpeg';
+import thirdContent from '../../../assets/homeImgs/thirdContent.jpg';
 
 interface SectionData {
   title: string;
@@ -18,30 +20,58 @@ interface SectionData {
 
 const sections: SectionData[] = [
   {
-    title: "Recensioni? No, commenti spassionati",
+    title: "RECENSIONI? Nah,<br /> parola troppo seria",
     description:
-      "I miei articoli non sono lunghi papiri tecnici. Sono racconti ironici, con battute, colpi di scena e verità scomode. Se un posto fa schifo, te lo dico con stile. Se è figo, ti ci mando subito.",
+      `<span itemprop="reviewBody">
+        Qui si racconta <em>con ironia</em>, <em>leggerezza</em> e <span style="font-style: italic;">un pizzico di follia</span>. <br />
+        <br /> <strong>Battute, colpi di scena e verità scomode</strong>… 
+        <br /> Il tutto condito dal <span itemprop="author" itemscope itemtype="http://schema.org/Person"><span itemprop="name">mio modesto commento non richiesto</span></span>, ovviamente. <br /> <br />
+        Se un posto è deludente, <strong>lo capirai tra le righe</strong> (o <em>tra le risate</em>). <br />
+        Se invece è <strong>da urlo</strong>: <span style="text-transform: uppercase;">lo urlo io per prima!</span> <br /> <br />
+        <span itemprop="description">Ti ci porterò col pensiero</span> 
+        (o almeno <em>ti farò venire voglia di andarci</em>)
+      </span>`,
     alt: "Illustrazione di una recensione divertente",
-    imgSrc: IMG_PLACEHOLDER,
+    imgSrc: firstContent.src ?? IMG_PLACEHOLDER,
     ctaHref: "/articoli",
     ctaLabel: "Scopri di più",
   },
   {
-    title: "Cerca. Scopri. Ridi.",
+    title: "PIATTI, POSTI E POST <br />CHE NON TI ASPETTI",
     description:
-      "Puoi cercare tra gli articoli per trovare quello che ti ispira. Magari ti aiuto a vivere la stessa esperienza e portarti a casa un ricordo unico (o almeno una storia da raccontare).",
+      `<span itemprop="reviewBody">
+        Sono <strong>Anna</strong>: viaggiatrice affamata, esploratrice di sapori <br /> e <em>fan dichiarata dei supermercati</em> <br />
+        (sì, quelli con corsie infinite e prodotti strani che ti fissano dallo scaffale). <br /> <br />
+        Se un posto è <strong>bizzarro</strong>, ci devo andare. <br />
+        Se è <em>sfizioso</em> e particolare, te lo racconto. <br /> <br />
+        Che si tratti di un <strong>ristorante</strong>, un <strong>bar</strong>, un <strong>pub</strong> o magari di 
+        <em>ricette proposte da food blogger</em>, proverò tutto e commenterò <span style="font-style: italic;">senza filtri</span>. <br /> <br />
+        In più, troverai anche <strong>rubriche speciali</strong>: quella in cui mi aggiro nei supermercati come un’investigatrice con il carrello. <br /> <br />
+        Scovo <em>novità assurde</em>, <em>snack che sembrano esperimenti</em> 
+        e prodotti che ti faranno dire <q>io questo lo provo!</q> (oppure <q>mai nella vita</q>).
+      </span>`,
     alt: "Immagine di ricerca articoli",
-    imgSrc: IMG_PLACEHOLDER,
+    imgSrc: secondContent.src ?? IMG_PLACEHOLDER,
     reverse: true,
     ctaHref: "/cerca",
     ctaLabel: "Scopri di più",
   },
   {
-    title: "Locali strani, ricordi belli",
+    title: "Cultura sì,<br /> ma con leggerezza <br />(e snack in borsa)",
     description:
-      "Non troverai il solito bar sotto casa. Qui si parla di posti assurdi, fuori dalle guide classiche — quelli che ti fanno dire “ma dove mi hai portato?”. Cerco esperienze memorabili, e te le racconto senza filtri.",
+      `<span itemprop="reviewBody">
+        Tra musei che <em>ti guardano male se ridi</em> — io ho riso. <br /> 
+        E tra <strong>esperienze culturali non convenzionali</strong> 
+        che arricchiscono… anche il <em>repertorio di figuracce</em>. <br /> <br />
+        Che si tratti del classico <strong>museo d’arte contemporanea</strong> — dove c’è sempre qualcuno che fotografa la scritta 
+        EXIT pensando sia un’installazione (e forse lo è) — o di <em>musei dedicati alle cose più insolite</em>, io ci vado. E ne scrivo. <br />
+        Ma non solo arte: racconterò anche <strong>esperienze particolari</strong>, di quelle che non sai se <em>ridere, piangere</em> 
+        o fare entrambe le cose insieme. <br /> 
+        Tipo la <q>cena al buio</q>, durante la quale ho passato due ore a chiacchierare 
+        con uno sconosciuto convinta fosse il mio amico Ambrogio. <strong>(Non era Ambrogio.)</strong>
+      </span>`,
     alt: "Foto di un locale insolito",
-    imgSrc: IMG_PLACEHOLDER,
+    imgSrc: thirdContent.src ?? IMG_PLACEHOLDER,
     ctaHref: "/locali",
     ctaLabel: "Scopri di più",
   },
@@ -60,18 +90,17 @@ const itemListJSON = getItemListStructuredData(
 );
 ---
 
-<Wave class="-mb-px"/>
 <section id="home-content" aria-label="Contenuto del blog commenti.non.richiesti" class="bg-[var(--color-primary)]" itemscope
-  itemtype="https://schema.org/ContactPage">
+  itemtype="https://schema.org/ItemList">
   {sections.map(({ title, description, alt, imgSrc, reverse, ctaHref, ctaLabel }) => (
     <ColSectionWrapper isColReverse={reverse}>
       <Fragment slot={reverse ? "right" : "left"}>
-        <ShadowImg src={imgSrc} alt={alt} shadowOffsetLeft={reverse ? "left-4" : "-left-4"} />
+        <ShadowImg src={imgSrc} alt={alt} shadowOffsetLeft={reverse ? "left-4" : "-left-4"} bgColor="bg-[var(--color-accent)]" />
       </Fragment>
       <Fragment slot={reverse ? "left" : "right"}>
-        <h2 class="text-2xl font-bold text-(--color-accent)">{title}</h2>
-        <p class="text-(--color-contrast)">{description}</p>
-        <CtaButton btnContent={ctaLabel} href={ctaHref} cntClass="text-(--color-accent)" aStyle="border-bottom-color: var(--color-accent);"/>
+        <h2 class="text-2xl font-bold text-(--color-accent)" set:html={title}>{title}</h2>
+        <p class="text-(--color-contrast)" set:html={description}>{description}</p>
+        <CtaButton btnContent={ctaLabel} href={ctaHref} cntClass="text-(--color-accent)" aStyle="border-bottom-color: var(--color-accent);" btnLabel="Vai alla sezione"/>
       </Fragment>
     </ColSectionWrapper>
   ))}

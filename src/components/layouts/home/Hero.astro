@@ -1,5 +1,5 @@
 ---
-import { BASE_PATH, SITE_DESCRIPTION } from "../../../consts";
+import { IMG_PLACEHOLDER, SITE_DESCRIPTION } from "../../../consts";
 import { getWebPageStructuredData } from "../../../utils/structuredData";
 import heroImg from '../../../assets/homeImgs/heroImg.jpeg';
 import ColSectionWrapper from "../../commons/ColSectionWrapper.astro";
@@ -19,22 +19,25 @@ const structuredData = {
 const JSONstructuredData = getWebPageStructuredData(structuredData);
 ---
 
-<section id="hero" role="region" aria-label="Sezione introduttiva del blog commenti.non.richiesti">
+<section id="hero" role="region" aria-label="Sezione introduttiva del blog commenti.non.richiesti" itemscope itemtype="https://schema.org/Person">
+    <meta itemprop="name" content="Commenti Non Richiesti">
+    <meta itemprop="url" content={siteUrl}>
+  
     <ColSectionWrapper idLeftCol="hero-col-left" idRightCol="hero-col-right" isColReverse="true">
         <Fragment slot="left">
-            <h1 class="leading-tight text-(--color-primary)" id="homepage-heading">
+            <h1 class="leading-tight text-[var(--color-primary)]" id="homepage-heading" itemprop="description">
                 Hello, Crazy! 🤪
                 <br>
-                Benvenuti su <strong class="gradient-text">commenti.non.richiesti</strong>
+                Benvenuti su <span class="gradient-text">commenti.non.richiesti</span>
             </h1>
-            <h2 class="max-w-full" style="font-size:medium;" id="payoff">
-                <em>Recensisco tutto. Anche quello che non volevi sapere.</em>
+            <h2 class="max-w-full text-[var(--color-text)]" style="font-size:large;" id="payoff">
+                <em>Commento. Anche quello che non volevi sapere.</em>
             </h2>
-            <CtaButton href={`#ultimi-post`} btnContent={"Dai un occhio"} class="flex items-center justify-start" />
+            <CtaButton href={`#ultimi-post`} btnContent={"Dai un occhio"} class="flex items-center justify-start" btnLabel="Vai alla sezione utlimi post" />
         </Fragment>
     
         <Fragment slot="right">
-            <ShadowImg src={heroImg.src} alt={IMG_ALT}, shadowOffsetLeft = "left-4" bgColor="bg-(--color-primary)"/>
+            <ShadowImg src={heroImg.src ?? IMG_PLACEHOLDER} alt={IMG_ALT}, shadowOffsetLeft = "left-4"/>
         </Fragment>
     </ColSectionWrapper>
 </section>

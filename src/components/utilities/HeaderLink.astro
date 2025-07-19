@@ -17,7 +17,7 @@ function normalizePath(path: string): string {
 const pathname = normalizePath(Astro.url.pathname);
 const cleanHref = normalizePath(href?.toString() || '/');
 
-const isActive = pathname === cleanHref;
+const isActive = pathname === cleanHref || ((cleanHref === '/blog' || cleanHref === '/miniguide') && pathname.startsWith(`${cleanHref}/`));
 ---
 
 <a href={href} class={className} aria-current={isActive ? 'page' : undefined} {...props}>

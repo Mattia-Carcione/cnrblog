@@ -1,11 +1,10 @@
 ---
-import { BASE_PATH } from "../../../consts";
+import { BASE_PATH, IMG_PLACEHOLDER } from "../../../consts";
 import Polaroid from "../../commons/Polaroid.astro";
 import SectionWrapper from "../../commons/SectionWrapper.astro";
 import { getItemListStructuredData } from "../../../utils/structuredData";
 
 import { getCollection } from "astro:content";
-import Wave from "../../commons/Wave.astro";
 
 const posts = (await getCollection("blog"))
   .sort((a, b) => new Date(b.data.pubDate).getTime() - new Date(a.data.pubDate).getTime())
@@ -21,7 +20,6 @@ const itemListSchema = getItemListStructuredData(
   }))
 );
 ---
-<Wave position="top" class="-mt-px"/>
 
 <SectionWrapper sectionId="ultimi-post" sectionClass="py-16" sectionAriaLabelledby="latest-posts-heading" sectionRole="region" data-aos="fade-zoom-in" data-aos-easing="ease-in-back" data-aos-offset="200"  h2Class="text-center text-(--color-primary)" divAriaLabelledby="latest-posts" href={`${BASE_PATH}/blog/`} btnAriaLabel="Vai alla pagina Blog" h2="Ultimi post: perché il mondo deve sapere! 😎" btnContent="Tutti i commenti non richiesti" divId="latest-posts" divClass="w-full flex flex-col justify-center items-center text-center">
   <!-- <h3 class="text-center text-(--color-primary)">Ultimi post: perché il mondo deve sapere! </h3> -->
@@ -29,7 +27,7 @@ const itemListSchema = getItemListStructuredData(
     <div class="grid gap-8 sm:grid-cols-2 lg:grid-cols-3 place-items-center">
       {posts.map((post, index) => {
         return (<a href={`${BASE_PATH}/blog/${post.id}/`} itemprop="mainEntityOfPage" class="relative rounded-md p-3 w-full w-full sm:max-w-sm lg:max-w-md transform hover:-rotate-1 hover:scale-105 transition duration-300 group text-black! polaroid-link" aria-label={`Vai all'articolo: ${post.data.title}`}>
-          <Polaroid src={post.data.heroImage?.src} alt={post.data.heroImgAlt || post.data.title} aos={"fade-up"} caption={post.data.title} class={`relative bg-white p-3 w-full shadow-[1rem_1rem_1rem_-0.5rem_rgba(0,0,0,0.54)] my-3 lg:my-16 mx-auto text-right transition-all duration-300 ease-in-out hover:-top-4 hover:cursor-pointer`} isLast={index === 0} description={post.data.description} itemtype="http://schema.org/BlogPosting" itemtype="https://schema.org/BlogPosting" year={`${post.data.pubDate}`} />
+          <Polaroid src={post.data.heroImage?.src ?? IMG_PLACEHOLDER} alt={post.data.heroImgAlt || post.data.title} aos={"fade-up"} caption={post.data.title} class={`relative bg-white p-3 w-full shadow-[1rem_1rem_1rem_-0.5rem_rgba(0,0,0,0.54)] my-3 lg:my-16 mx-auto text-right transition-all duration-300 ease-in-out hover:-top-4 hover:cursor-pointer`} isLast={index === 0} description={post.data.description} itemtype="http://schema.org/BlogPosting" itemtype="https://schema.org/BlogPosting" year={`${post.data.pubDate}`} />
           </a>
       )})}
     </div>

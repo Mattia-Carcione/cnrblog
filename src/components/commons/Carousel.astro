@@ -1,0 +1,13 @@
+---
+import type { HTMLAttributes } from "astro/types";
+import { IMG_PLACEHOLDER } from "../../consts";
+
+type Props = HTMLAttributes<"img">;
+
+const { src, alt, ...props } = Astro.props;
+---
+
+<div class="relative group snap-center shrink-0 w-[80%]">
+    <img alt={alt} src={src ?? IMG_PLACEHOLDER} class="w-full h-full" {...props} />
+    <slot />
+</div>

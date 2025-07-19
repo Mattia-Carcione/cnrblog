@@ -1,15 +1,19 @@
 ---
 interface Props {
   btnContent: string;
+  btnLabel: string;
   href: string;
   class?: string;
   cntClass?: string;
   extraClass?: string;
   aStyle?: string;
+  btnTarget?: string;
+  btnRel?: string;
+  bntId?: string;
 }
-const { btnContent, href, class: extraClass, cntClass = "text-(--color-primary)", aStyle, ...props } = Astro.props;
+const { btnContent, btnLabel, href, class: extraClass, cntClass = "text-(--color-primary)", aStyle, btnTarget, btnRel, bntId, ...props } = Astro.props;
 ---
 
-<a href={href} class={`cta ${extraClass}`} aria-label={btnContent} style={aStyle} {...props}>
-  <span class=`cta-content ${cntClass}`>{btnContent}</span>
+<a href={href} class={`cta ${extraClass}`} aria-label={btnLabel} style={aStyle} {...props} target={btnTarget} rel={btnRel} id={bntId}>
+  <span class=`cta-content ${cntClass}`>{btnContent} 🚀</span>
 </a>

@@ -1,0 +1,57 @@
+---
+import BaseHead from "../../../components/utilities/BaseHead.astro";
+import Header from "../../../components/layouts/Header.astro";
+import Footer from "../../../components/layouts/Footer.astro";
+import Polaroid from "../../../components/commons/Polaroid.astro";
+import { SITE_TITLE, SITE_DESCRIPTION } from "../../../consts";
+import { getCollection } from "astro:content";
+import { matchesSearch } from '../../../utils/searchFilterdPost';
+import FormattedDate from "../../../components/utilities/FormattedDate.astro";
+
+const searchParam = Astro.url?.searchParams.get("search") || "";
+
+const posts = await getCollection("blog");
+
+const filteredPosts = posts
+  .filter((post) => matchesSearch(post, searchParam))
+  .sort((a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf());
+---
+
+<!doctype html>
+<html lang="it">
+  <head>
+    <BaseHead title={SITE_TITLE} description={SITE_DESCRIPTION} />
+  </head>
+  <body>
+    <Header />
+
+    <main class="px-4 py-8">
+      {searchParam && (
+        <p class="mb-4 text-center">
+          Risultati per: <strong>{searchParam}</strong>
+        </p>
+      )}
+
+      <section class="grid gap-8 sm:grid-cols-2 lg:grid-cols-3 place-items-center">
+        {
+          filteredPosts.map((post, index) => (
+            <a href={`/blog/${post.id}/`} class="relative rounded-md p-3 w-full max-w-xs transform hover:-rotate-1 hover:scale-105 transition duration-300 group text-black polaroid-link" aria-label={`Vai all'articolo: ${post.data.title}`}>
+              <Polaroid
+                src={post.data.heroImage?.src}
+                alt={post.data.heroImgAlt || post.data.title}
+                aos={"fade-up"}
+                caption={post.data.title}
+                class="relative bg-white p-3 w-full shadow-[1rem_1rem_1rem_-0.5rem_rgba(0,0,0,0.54)] my-3 lg:my-16 mx-auto text-right transition-all duration-300 ease-in-out hover:-top-4 hover:cursor-pointer"
+                description={post.data.description}
+                itemtype="http://schema.org/BlogPosting"
+                year={`${post.data.pubDate.getUTCDay()}/${post.data.pubDate.getUTCMonth()}/${post.data.pubDate.getUTCFullYear()}`}
+              />
+            </a>
+          ))
+        }
+      </section>
+    </main>
+
+    <Footer />
+  </body>
+</html>
